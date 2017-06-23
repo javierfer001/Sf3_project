@@ -1,0 +1,74 @@
+{%extends "::base.html.twig"%}
+{% block lenguaje %}{{path('faq',{'_locale':app.request.locale=='es' ?'en':'es'})}}{% endblock %}
+{% block sitedescription%}{{'Have a question'|trans}}? {{'QuestionMessage'|trans}}{% endblock %}
+{% block welcome %}{{'Frequently Asked Questions'|trans}}{% endblock %}
+
+{% block contect %}
+    <section class="section bg-img bg02 fixed" data-stellar-background-ratio="0.4">
+        <div class="bg-overlay op2"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1 class="title-larger title color-on-img text-center mb20 mt10">{{'Frequently Asked Questions'|trans}}</h1>
+                    <div class="br-bottom-center mb0"></div>
+                    <p class="intro-p text-center mb0">{% trans from 'about'|raw%}subtitle{%endtrans%}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-page">
+        <div class="container "><div class="divider mb0 mt0"></div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-4 col-md-3">
+                    <ul class="nav nav-tabs vertical">
+                        {%for clasification in clasifications%}
+                            <li class="{{loop.index==1?'active':''}}"><a href="#tab{{clasification.id}}" data-toggle="tab"><i class="fa fa-list-ul"></i>{{clasification.__showClasification(app.request.locale)|raw}}</a></li>
+                                {% endfor %}
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-8 col-md-7">
+                    <div class="tab-content vertical">
+                        {%for clasification in clasifications%}
+                            <div class="tab-pane fade in {{loop.index==1?'active':''}}" id="tab{{clasification.id}}">
+                                <div class="panel-group" id="toggle">
+                                    {%for question in clasification.questions%}
+                                        <div class="panel ">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" href="#three1{{question.id}}">
+                                                        <i class="fa fa-chevron-down {{loop.index==1?"":'upside-down'}}"></i> {{question.__showQuestion(app.request.locale)|raw}}
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="three1{{question.id}}" class="panel-collapse collapse {{loop.index==1?'in':''}}">
+                                                <div class="panel-body">
+                                                    <p>{{question.__showRespose(app.request.locale)|raw}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="hidden-xs hidden-sm col-md-2 mt10">
+                    <!-- SideBar -->
+                    <aside class="sidebar">
+                        <div class="sidebar-widget">
+                            <h3 class="sidebar-title br-bottom">{{'Translate Questions'|trans}}</h3>
+                            <ul class="sidebar-socials unstyled-list">
+                                {%if app.request.locale=='en'%}
+                                    <li><a onclick="$('#formLocal').submit()" style="cursor:pointer"><i class="fa fa-language"></i>Traducir Espa&ntilde;ol</a></li>
+                                    {%else%}
+                                    <li><a onclick="$('#formLocal').submit()" style="cursor:pointer"><i class="fa fa-language"></i>Translate English</a></li>
+                                    {%endif%}
+                            </ul>
+                        </div>
+                    </aside>
+                    {%include '::partial/sidebar.html.twig'%}
+                </div>
+            </div> 
+        </div>
+    </section>
+{% endblock %}    

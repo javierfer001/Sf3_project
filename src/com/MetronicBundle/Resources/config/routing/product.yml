@@ -1,0 +1,20 @@
+product_metronic:
+    path:     /
+    defaults: { _controller: "MetronicBundle:Product:index" }
+product_pagination_metronic:
+    path:     /pagination
+    defaults: { _controller: "MetronicBundle:Product:pagination" }
+product_new_metronic:
+    path:     /new/{id}
+    defaults: { _controller: "MetronicBundle:Product:new" }
+product_save_metronic:
+    path:     /save/{id}
+    defaults: { _controller: "MetronicBundle:Product:save" }
+product_delete_metronic:
+    path:     /delete/
+    methods: POST
+    defaults: { _controller: "MetronicBundle:Product:delete" }
+product_image_metronic:
+    path:     /imagedelete/
+    methods: POST
+    defaults: { _controller: "MetronicBundle:Product:deleteImagen" }    

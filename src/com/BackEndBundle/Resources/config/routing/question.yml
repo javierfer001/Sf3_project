@@ -1,0 +1,11 @@
+question_index:
+    path:     /{id_clasification}/index
+    defaults: { _controller: "BackEndBundle:Question:index" }
+
+question_new:
+    path:     /new/{id_clasification}/{id}
+    defaults: { _controller: "BackEndBundle:Question:new" }
+
+question_delete:
+    path:     /{id}/delete/{id_clasification}/
+    defaults: { _controller: "BackEndBundle:Question:delete" }

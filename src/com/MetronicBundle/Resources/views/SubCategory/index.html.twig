@@ -1,0 +1,89 @@
+{% extends "MetronicBundle:Default:index.html.twig"%}
+{% block content %}
+    <a class="btn btn-default" href="{{path('category_metronic')}}" style="color: green"><i class="fa fa-arrow-left"></i> Go Back</a>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-md-8 col-sm-12">
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+
+            <div class="portlet box red">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-cogs"></i>SubCategory of {{category.category}}</div>
+                    <div class="actions">
+                        <a href="{{path('category_sub_new_metronic',{idCategory:category.id,id:0})}}" class="btn btn-default btn-sm">
+                            <i class="fa fa-plus"></i> Add </a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <table class="table table-striped table-bordered table-hover table-checkable order-column" id="table_manager">
+                        <thead>
+                            <tr>
+                                <th>Sub Category</th>
+                                <th>Sub Category(es)</th>
+                                <th style="width: 100px">Actions</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block script_execute %}
+    <script>
+        var table;
+        $(document).ready(function () {
+
+            {% if SAVE=='TRUE' %}
+            success("The subcategory was saved");
+            {% endif %}
+
+            table = $('#table_manager').DataTable({
+                "lengthMenu": [
+                [10, 20, 50],
+                [10, 20, 50]// change per page values here
+                ],
+                "processing": true,
+                "serverSide": true,
+                "ajax": {
+                    "url": "{{path('category_sub_pagination_metronic')}}",
+                    "type": "POST",
+                    data:{
+                    'idCategory':{{idCategory}}
+                        }
+                },
+                "pageLength": 10,
+                "order": [
+                    [1, "asc"]
+                ] // set first column as a default sort by asc
+            });
+        });
+        function deleteAction(id) {
+            bootbox.confirm("Are you sure?", function (result) {
+                bPreguntar = false;
+                if (result == true) {
+                    App.blockUI({
+                        target: ".portlet-body",
+                        boxed: !0,
+                        textOnly: !0,
+                        message: "Delete..."
+                    });
+                    $.ajax({
+                        method: "POST",
+                        url: "{{path('category_sub_delete_metronic')}}",
+                        dataType: "JSON",
+                        data: {
+                            'id': id,
+                        },
+                        success: function (response) {
+                            table.ajax.reload(null, false);
+                            App.unblockUI(".portlet-body");
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+{% endblock %}

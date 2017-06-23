@@ -1,0 +1,38 @@
+{% extends 'BackEndBundle::index.html.twig' %}
+
+{% block table -%}
+   <h1>Question list ("{{clasification.clasification}}")</h1>
+    <a class="btn btn-success"  href="{{ path('question_new',{id:0,'id_clasification':id_clasification}) }}">
+        Create question
+    </a>
+    <br>
+    <br>
+    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+        <thead>
+            <tr>
+                <th>Sort</th>
+                <th>Question</th>
+                <th>Question (Spainish)</th>
+                <th>Response</th>
+                <th>Response (Spainish)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for question in questions %}
+            <tr>
+                <td>{{ question.order }}</td>
+                <td>{{ question.question|raw }}</td>
+                <td>{{ question.questionEs|raw }}</td>
+                <td>{{ question.response|raw }}</td>
+                <td>{{ question.responseEs|raw }}</td>
+                <td>
+                    <ul>
+                        <a href="{{ path('question_new', { 'id_clasification':id_clasification,'id': question.id }) }}">edit</a>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,20 @@
+metronic_homepage:
+    path:     /
+    defaults: { _controller: MetronicBundle:Default:index }
+    
+metronic_product:
+    resource: "@MetronicBundle/Resources/config/routing/product.yml"
+    prefix:   /product
+    
+metronic_category:
+    resource: "@MetronicBundle/Resources/config/routing/category.yml"
+    prefix:   /category/list  
+
+metronic_product_popular:
+    resource: "@MetronicBundle/Resources/config/routing/popularproduct.yml"
+    prefix:   /popular/product 
+
+metronic_question:
+    resource: "@MetronicBundle/Resources/config/routing/clasification.yml"
+    prefix:   /clasification/ 
+

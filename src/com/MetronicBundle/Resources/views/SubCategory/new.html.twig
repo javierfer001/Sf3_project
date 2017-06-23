@@ -1,0 +1,42 @@
+{% extends "MetronicBundle:Default:index.html.twig"%}
+{% block content %}
+    <a class="btn btn-default" href="{{path('category_sub_metronic',{idCategory:idCategory})}}" style="color: green"><i class="fa fa-arrow-left"></i> Go Back</a>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <div class="portlet box red">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-cogs"></i>SubCategory {{category.category}}
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <form role="form" method="POST">
+                        <div class="form-group">
+                            <label>Sub-Category (English)</label>
+                            <input name="category_en" class="form-control" value="{{entity.subcategory}}" placeholder="English">
+                        </div>
+                        <div class="form-group">
+                            <label>Sub-Category (Spanish)</label>
+                            <input name="category_es"  value="{{entity.subcategoryEs}}" class="form-control" placeholder="Spanish">
+                        </div>
+                        <button type="submit" class="btn btn-success">Save</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block script_execute %}
+    <script>
+        $(document).ready(function () {
+
+        {% if SAVE=='TRUE' %}
+                success("The sub-category was saved");
+        {% endif %}
+            });
+    </script>
+{% endblock %}

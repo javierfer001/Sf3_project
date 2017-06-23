@@ -1,0 +1,13 @@
+product_popular_metronic:
+    path:     /index
+    defaults: { _controller: "MetronicBundle:PopularProduct:index" }
+product_popular_pagination_metronic:
+    path:     /pagination
+    defaults: { _controller: "MetronicBundle:PopularProduct:pagination" }
+product_popular_new_metronic:
+    path:     /new/{id}
+    defaults: { _controller: "MetronicBundle:PopularProduct:new" }    
+    
+product_popular_delete_metronic:
+    path:     /delete/popular/product
+    defaults: { _controller: "MetronicBundle:PopularProduct:delete" }    

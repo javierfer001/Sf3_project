@@ -1,0 +1,40 @@
+{% extends "MetronicBundle:Default:index.html.twig"%}
+{% block content %}
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <div class="portlet box red">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-cogs"></i>Data Category
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <form id="form" role="form" method="POST">
+                        <div class="form-group">
+                            <label>Category (English)</label>
+                            <input name="category_en" class="form-control" value="{{entity.category}}" placeholder="English">
+                        </div>
+                        <div class="form-group">
+                            <label>Category (Spanish)</label>
+                            <input name="category_es" class="form-control" value="{{entity.categoryEs}}" placeholder="Spanish">
+                        </div>
+                        <button type="submit" class="btn btn-success">Save</button>
+{#                        <button type="reset" class="btn btn-default">Reset</button>#}
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %} 
+{% block script_execute %}
+    <script>
+        $(document).ready(function () {
+            
+            {% if SAVE=='TRUE' %}
+                success("The category was saved");    
+            {% endif %}
+        });
+    </script>
+{% endblock %}

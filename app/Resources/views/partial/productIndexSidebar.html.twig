@@ -1,0 +1,58 @@
+<!-- Sidebar -->
+<aside class="sidebar">
+    {% set sidebarSocial %}
+        <div class="sidebar-widget">
+            <h3 class="sidebar-title br-bottom">{{'Get Social'|trans}}</h3>
+            <ul class="sidebar-socials unstyled-list">
+                <li><a href="https://www.instagram.com/jjrattan" data-toggle="tooltip" data-placement="right" target="blank" title="Instagram"><i class="fa fa-instagram"></i>{{'Follow us'|trans}}</a></li>
+                <li><a href="https://www.facebook.com/JJRattan" data-toggle="tooltip" data-placement="right" target="_blank" title="Facebook"><i class="fa fa-facebook"></i>{{'Like us'|trans}}</a></li>
+                <li><a href="https://plus.google.com/113600105196154706578" data-toggle="tooltip" data-placement="right" target="blank" title="Google Plus"><i class="fa fa-google-plus"></i>{{'Circle us'|trans}}</a></li>
+                <li><a href="https://www.pinterest.com/jjrattan/" data-toggle="tooltip" data-placement="right" target="blank"  title="Pintrest"><i class="fa fa-pinterest"></i>{{'Follow us'|trans}}</a></li>
+                <li><a href="http://jjrattan.us7.list-manage.com/subscribe/post?u=f561302f20ac637ad457ed0f0&id=6378d1f482" data-toggle="tooltip" data-placement="right" target="blank" title="@J&JRattan"><i class="fa fa-envelope"></i>{{'SUBSCRIBE'|trans}}</a></li>
+            </ul>
+        </div>
+    {% endset %}
+    {% set sidebarContact %}
+        <div class="sidebar-widget">
+            <h3 class="sidebar-title br-bottom">{{'CONTACT INFORMATION'|trans}}</h3>
+            <address class="sidebar-contact">
+                <p><i class="fa icon_building"></i>&nbsp;J&J Rattan</p>
+                <p><a href="{{path('contact')}}#map" title="Store Address"><i class="fa fa-map-marker"></i>&nbsp;4738 SW 72nd Ave Miami FL 33155</a></p>
+                <p><i class="fa fa-phone"></i>&nbsp;305-666-7503</p>
+                <p><a href="mailto:info@jjrattan.com?Subject=JJRattan.com" target="_top"><i class="fa fa-envelope"></i>&nbsp;info@jjrattan.com</a></p>
+            </address>
+        </div>
+    {% endset %}
+    {# Detirmine wether or not to show both social and contact on sidebar #}
+    {%if  productPopular is defined and productPopular|length >= 9 %} 
+        {{ sidebarContact }} 
+    {% else %}
+        {{ sidebarSocial }}
+        {{ sidebarContact }}
+    {% endif %}
+</aside>
+{# Checks for popular products if any are set, show otherwise show nothing #}
+{%if productPopular is defined and productPopular|length != 0 %}  
+    <aside class="sidebar shop-sidebar">
+        <div class="sidebar-widget">
+            <h3 class="sidebar-title br-bottom">{{'popproduct'|trans}}</h3>
+            <div class="clearfix">
+                <ul class="sidebar-posts">
+                    {% for p in productPopular %}
+                        <li class="sidebar-post mb10">
+                            <a title="{{ app.request.locale=='es' ? (p.nameEs) : (p.name) }}" href="{{ path('product_name_show',{'id':p.id,'name':(app.request.locale=='es' ? (p.nameEs|truncate(30))|url_encode|replace(stringlist) : (p.name|truncate(30))|url_encode|replace(stringlist))}) }}">
+                                <div class="image-post">
+                                    <img  style=" height: 80%;" src="{{asset('producto/'~p.imagenesShowName('file_1'))}}" alt="{{p.imagenesShowNameEdit('file_1').getAlt()|default('Image J&J RATTAN')}}">
+                                </div>
+                                <div class="info-post">
+                                    <h5>{{ app.request.locale=='es' ? (p.nameEs|truncate(15, true)) : (p.name|truncate(15, true)) }}
+                                        </a></h5>
+                                    <span>{{ p.showSubCategory(app.request.locale)|truncate(15) }}</span>
+                                </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </aside>
+{% endif %}

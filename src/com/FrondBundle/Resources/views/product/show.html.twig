@@ -1,0 +1,203 @@
+{%extends "::base.html.twig"%}
+{% block lenguaje %}{{path('product_name_show',{'id':product.id,'_locale':app.request.locale=='es' ?'en':'es','name':(app.request.locale=='es' ? (product.nameEs)|url_encode|replace(stringlist) : (product.name)|url_encode|replace(stringlist))})}}{% endblock %}
+{% block sitedescription%}{{'Explore Our Store'|trans}}! {{'ExploreMessage'|trans}}{% endblock %}
+
+{% block contect %}
+    <section class="shop-section section-page">
+        <div class="container">
+            <div class="row">
+                <div class=" hidden-xs hidden-sm col-md-3 ">
+                    {%include '::partial/productShowSidebar.html.twig'%}
+                </div>
+                <div class="col-md-9 space-left">
+                    <div class="row ">
+                        <div class="col-sm-6 col-md-5">
+                            <div id="owl-shop" class="owl-carousel mb30">
+                                {% for img in product.imagenes%}
+                                    <a class="fancybox mask" rel="Products"  title="{{ (app.request.locale=='es' ? (product.nameEs) : (product.name|default('product'))) }} - {{product.showSubCategory(app.request.locale)|default('product')}}" href="{{asset('producto/'~img.url)}}" alt="{{ (app.request.locale=='es' ? (product.nameEs|truncate(10)) : (product.name|truncate(10))) }}" >
+                                        <div class="owl-item-shop zoom">
+                                            <img class="img-thumbnail" alt="{{ (app.request.locale=='es' ? (product.nameEs) : (product.name|default('product'))) }} - Photo" src="{{asset('producto/'~img.url)}}" alt="{{ (app.request.locale=='es' ? (product.nameEs|truncate(10)) : (product.name|truncate(10))) }}">
+                                            <small class="hidden-xs hidden-sm"><p class="space-left"><i class="fa fa-search"></i>&nbsp;&nbsp;{{'Roll Over Image'|trans|raw}}</p></small>
+                                        </div>
+                                    </a>
+                                {% endfor%}
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-7 sm-box">
+                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                <a target="_blank" class="btn btn-success" href="{{ path('product_new_metronic', { 'id': product.id }) }}">edit</a>
+                            {% endif %}
+                            <div class="shop-description-product">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h3 class="shop-product-name br-bottom">{{ (app.request.locale=='es' ? (product.nameEs) : (product.name|default('product'))) }} <br><span>{{product.showSubCategory(app.request.locale)|default('product')}}</span></h3>
+                                    </div>
+                                </div>
+                                <div class="row mb10">
+                                    <div class="col-sm-12">
+                                        <div class="clearfix">
+                                            <span class="rating-system rate-product"></span> <small><a href="#" class="see-reviews" data-toggle="modal" data-target="#modal-reviews">0</a>&nbsp;Reviews</small> &nbsp;
+                                            <small><a href="#" class="see-reviews" data-toggle="modal" data-target="#modal-write-reviews">Write a Review</a></small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class=" mb10">{{ (app.request.locale=='es' ? (product.shortDescripEs|default('product')|raw) : (product.shortDescrip|default('product')|raw)) }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="row mb20">
+                                <div class="col-sm-12">
+                                    <h3 class="title-small title-small-a">{{'Description'|trans|raw}}</h3>
+                                    <p>{{ (app.request.locale=='es' ? (product.descripEs|raw) : (product.descrip|raw)) }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    {% if productsReferent|length > 1 %}
+        <section class="section mt30">
+            <div class="container">
+                <div class="row col-p0">
+                    <div class="col-sm-12">
+                        <h2 class="title-medium br-bottom mb50">{{'Related Products'|trans}}</h2>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="portfolio portfolio-center portfolio-text">
+                            <div class="owl-carousel owl-columns5">
+                                {% for p in productsReferent %}
+                                    {% if p .id != product.id %}
+                                        <div class="owl-el">
+                                            <div class="portfolio-el py5">
+                                                <div class="view br2">
+                                                    <img class="img-thumbnail" src="{{asset('producto/'~p.imagenesShowName('file_1'))}}" alt="{{p.imagenesShowNameEdit('file_1').getAlt()|default('Image J&J RATTAN')}}"/>									
+                                                    <div class="mask">
+                                                        <a href="{{path('product_name_show',{'id':p.id,'name':(app.request.locale=='es' ? (p.nameEs|default('product'))|url_encode|replace(stringlist) : (p.name|default('product'))|url_encode|replace(stringlist))})}}" class="portfolio-middle"><i class="fa fa-search"></i></a>
+                                                    </div>
+                                                </div>
+                                                <div class="portfolio-text-content">
+                                                    <h3 class="title-small-a"><a href="{{path('product_name_show',{'id':p.id,'name':(app.request.locale=='es' ? (p.nameEs|default('product')) : (p.name|default('product')))})}}">{{ app.request.locale=='es' ? (p.nameEs|default('product')|truncate(30)) : (p.name|default('product')|truncate(30)) }}</a></h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+    
+    <!-- REVIEWS -->
+    <div class="modal fade" id="modal-reviews" tabindex="-1" role="modal" aria-labelledby="modal-label-reviews" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="modal-label-reviews">Reviews</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="shop-reviews">
+                                <div class="shop-comment">
+                                    <div class="author">
+                                        <cite><a href="#">Reviews Coming Soon!</a></cite>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {# <div class="col-sm-12">
+                             <div class="shop-reviews">
+                                 <div class="shop-comment">
+                                     <div class="author">
+                                         <cite><a href="#">John Doe</a></cite>
+                                         <span class="date">15th March 2015</span>
+                                         <span class="rating-system rate-review"></span>
+                                     </div>
+                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, nemo, animi, nulla quidem placeat vero eos dolor et illo distinctio vel ipsam similique aliquid iste pariatur in debitis repellendus sequi? Quaerat, ullam ab excepturi ut illo eius saepe placeat neque ipsam.</p>
+                                 </div>
+                             </div>
+                             <div class="mt40"><a href="#" class="btn btn-b">See more reviews</a></div>
+                         </div>#}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Write REVIEWS -->
+    <div class="modal fade" id="modal-write-reviews" tabindex="-1" role="modal" aria-labelledby="modal-label-reviews" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="modal-label-reviews">Write a Review</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="shop-reviews">
+                                <div class="shop-comment">
+                                    <div class="author">
+                                        <cite>Feature Coming Soon!</cite>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="shop-reviews">
+                                {#<form method="post" action="" onSubmit="return validateForm();">
+                                    <div style="width: 400px;">
+                                    </div>
+                                    <div style="padding-bottom: 18px;font-size : 21px;">Product Review</div>
+                                    <div style="padding-bottom: 18px;">Reviewer<span style="color: red;"> *</span><br/>
+                                        <input type="text" id="data_11" name="data_11" style="width : 450px;"/>
+                                    </div>
+                                    <div style="padding-bottom: 18px;">Rate this product<br/>
+                                        <select id="data_3" name="data_3" style="width : 150px;"><option>5</option>
+                                            <option>4</option>
+                                            <option>3</option>
+                                            <option>2</option>
+                                            <option>1</option>
+                                        </select>
+                                    </div>
+                                    <div style="padding-bottom: 18px;">Review<span style="color: red;"> *</span><br/>
+                                        <textarea id="data_8" ${readonly} name="data_8" style="width : 450px;" rows="10"></textarea>
+                                    </div>
+                                    <div style="padding-bottom: 18px;">Would you recommend this product?<span style="color: red;"> *</span><br/>
+                                        <span><input type="radio" id="data_9_0" name="data_9" value="Yes"/> Yes</span><br/>
+                                        <span><input type="radio" id="data_9_1" name="data_9" value="No"/> No</span><br/>
+                                        <span><input type="radio" id="data_9_2" name="data_9" value="I am not sure"/> I am not sure</span><br/>
+                                    </div>
+                                    <div style="padding-bottom: 18px;"><input name="skip_Submit" value="Submit" type="submit"/></div>
+                                    <div>
+                                        
+                                    </div>
+                                </form>#}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}    
+{% block script_utility %}
+    <script src="{{asset('js/fancybox/jquery.fancybox.js?v=2.1.5')}}"></script>
+    {# <script src="{{asset('js/fancybox/helpers/jquery.fancybox-buttons.js?v=1.0.5')}}"></script>#}
+    <link rel="stylesheet" type="text/css" href="{{asset('js/fancybox/jquery.fancybox.css?v=2.1.5')}}" media="screen" />
+    {#<link rel="stylesheet" type="text/css" href="{{asset('js/fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5')}}" media="screen" />#}
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.fancybox').fancybox();
+        });
+    </script>
+{% endblock %} 

@@ -1,0 +1,37 @@
+{% extends 'BackEndBundle::index.html.twig' %}
+
+{% block table -%}
+    <h1>Category list</h1>
+    <a class="btn btn-success" href="{{ path('category_new',{ 'id': 0,'name': 'null'} ) }}">
+        Create Category
+    </a>
+    <br>
+    <br>
+    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Category(Spanish)</th>
+                <th>SubCategory</th>
+                <th style="width: 300px">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entity in entities %}
+                <tr>
+                    <td>{{ entity.category }}</td>
+                    <td>{{ entity.categoryEs }}</td>
+                    <td>{{ entity.stringListSubCategory() }}</td>
+                    <td>
+                        <ul>
+                            <a class="btn btn-warning" href="{{ path('subcategory', { 'idCategory': entity.id}) }}">Sub Category</a>
+                            <a class="btn btn-success" href="{{ path('category_new', { 'id': entity.id,'name': entity.category|default('s')|url_encode}) }}">edit</a>
+                            <a class="btn btn-danger" href="{{ path('category_delete', { 'id': entity.id}) }}">Delete</a>
+
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

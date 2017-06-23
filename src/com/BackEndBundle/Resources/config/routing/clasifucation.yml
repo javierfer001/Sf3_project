@@ -1,0 +1,12 @@
+clasification_index:
+    path:     /
+    defaults: { _controller: "BackEndBundle:Clasification:index" }
+
+clasification_new:
+    path:     /new/{id}
+    defaults: { _controller: "BackEndBundle:Clasification:new" }
+
+clasification_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BackEndBundle:Clasification:delete" }
+  

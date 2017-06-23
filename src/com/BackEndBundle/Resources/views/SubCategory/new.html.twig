@@ -1,0 +1,30 @@
+{% extends 'BackEndBundle::data.html.twig' %}
+
+{% block data -%}
+    <h1>Sub-Category</h1>
+    <a class="btn btn-danger" href="{{ path('subcategory',{'idCategory':idCategory}) }}">
+        Back to the list
+    </a>
+    <br>
+    <br>
+    <form role="form" method="POST">
+        <div class="form-group">
+            <label>Sub-Category (English)</label>
+            <input name="category_en" class="form-control" value="{{entity.subcategory}}" placeholder="English">
+        </div>
+        <div class="form-group">
+            <label>Sub-Category (Spanish)</label>
+            <input name="category_es"  value="{{entity.subcategoryEs}}" class="form-control" placeholder="Spanish">
+        </div>
+        <button type="submit" class="btn btn-success">Save</button>
+        <button type="reset" class="btn btn-default">Reset</button>
+    </form>
+
+    {%if saveOK|default(false)%}              
+        <script>
+            $(document).ready(function () {
+                toastr['success']('', 'Save OK');
+            });
+        </script>
+    {%endif%}
+{% endblock %}

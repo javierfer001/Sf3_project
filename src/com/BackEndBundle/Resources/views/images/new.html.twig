@@ -1,0 +1,38 @@
+{% extends 'BackEndBundle::data.html.twig' %}
+
+{% block data -%}
+    <h1>Image of - {{entity.product.name}} ({{entity.product.nameEs}})</h1>
+    <a class="btn btn-danger" href="{{ path('images_index') }}">
+        Back to the list
+    </a>
+    <br>
+    <br>
+    <form role="form" method="POST" enctype="multipart/form-data">
+       <div style="width: 600px;">
+        <img src="{{asset('producto/'~entity.url)}}" style="width: 50%"/>
+        <div class="form-group"><br>
+            <label>Upload New Image</label>
+            <input name="file" type="file">
+        </div>
+        <div class="form-group">
+            <label>Descripcion</label>
+            <textarea name="description" class="form-control">{{entity.description}}</textarea>
+        </div>
+        <div class="form-group">
+            <label>Alt</label>
+            <input name="alt" class="form-control" value="{{entity.alt}}" placeholder="Alt">
+        </div>
+        <button type="submit" class="btn btn-success">Save</button>
+        <button type="reset" class="btn btn-default">Reset</button>
+       </div>
+    </form>
+
+
+    {%if saveOK|default(false)%}              
+        <script>
+            $(document).ready(function () {
+                toastr['success']('', 'Save OK');
+            });
+        </script>
+    {%endif%}
+{% endblock %}

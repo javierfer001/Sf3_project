@@ -1,0 +1,258 @@
+{% extends 'BackEndBundle::data.html.twig' %}
+
+{% block data -%}
+    <link rel="stylesheet" href="{{asset('backend/css/style.css')}}" />
+    <script type="text/javascript" src="{{asset('backend/js/multiselect.min.js')}}"></script>
+    <a class="btn btn-danger"  href="{{ path('product_index') }}">
+        Back to the list
+    </a>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-lg-12">
+            <form id="form" role="form" method="POST" action="{{path('product_save',{id:id})}}" enctype="multipart/form-data">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        Product creation 
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="panel panel-green">
+                                    <div class="panel-heading">
+                                        General Info 
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            <label>Code</label>
+                                            <input name="code" class="form-control" value="{{entity.code}}" placeholder="Code">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Name(English)</label>
+                                            <input name="name" class="form-control" value="{{entity.name}}" placeholder="Name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Name(Spanish)</label>
+                                            <input name="name_es" class="form-control" value="{{entity.nameEs}}" placeholder="Name">
+                                        </div>
+                                        <div class="form-group" style="">
+                                            <label>Category (Spanish)</label>
+                                            <div class="row">
+                                                <div class="col-xs-5">
+                                                    <select name="categoryfrom[]" id="category" class="form-control" size="12" multiple="multiple" style="margin-left: 10px;">
+                                                        {% for cat in category%}
+                                                            {%if not(cat.id in idsCategory) %}
+                                                                <option value="{{cat.id}}">{{cat.category}} ({{cat.categoryEs}})</option>
+                                                            {%endif%}
+                                                        {%endfor%}
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-xs-2">
+                                                    <button type="button" id="category_rightAll" class="btn btn-block"><i class="glyphicon glyphicon-forward"></i></button>
+                                                    <button type="button" id="category_rightSelected" class="btn btn-block"><i class="glyphicon glyphicon-chevron-right"></i></button>
+                                                    <button type="button" id="category_leftSelected" class="btn btn-block"><i class="glyphicon glyphicon-chevron-left"></i></button>
+                                                    <button type="button" id="category_leftAll" class="btn btn-block"><i class="glyphicon glyphicon-backward"></i></button>
+                                                </div>
+
+                                                <div class="col-xs-5">
+                                                    <select name="categorySelect[]" id="category_to" class="form-control" size="12" multiple="multiple" style="margin-right: 10px;">
+                                                        {% for cat in category%}
+                                                            {%if cat.id in idsCategory %}
+                                                                <option value="{{cat.id}}">{{cat.category}} ({{cat.categoryEs}})</option>
+                                                            {%endif%}
+                                                        {%endfor%}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Sub-Category (Spanish)</label>
+                                            <div class="row">
+                                                <div class="col-xs-5">
+                                                    <select name="SubCategoryfrom[]" id="subcategory" class="form-control" size="12" multiple="multiple">
+                                                        {% for cat in Subcategory %}
+                                                            {%if not(cat.id in idsSubCategory) %}
+                                                                <option value="{{cat.id}}">{{cat.subCategory}}( {{cat.category.showCategory()|default('')}})</option>
+                                                            {%endif%}
+                                                        {%endfor%}
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-xs-2">
+                                                    <button type="button" id="subcategory_rightAll" class="btn btn-block"><i class="glyphicon glyphicon-forward"></i></button>
+                                                    <button type="button" id="subcategory_rightSelected" class="btn btn-block"><i class="glyphicon glyphicon-chevron-right"></i></button>
+                                                    <button type="button" id="subcategory_leftSelected" class="btn btn-block"><i class="glyphicon glyphicon-chevron-left"></i></button>
+                                                    <button type="button" id="subcategory_leftAll" class="btn btn-block"><i class="glyphicon glyphicon-backward"></i></button>
+                                                </div>
+
+                                                <div class="col-xs-5">
+                                                    <select name="SubCategoryto[]" id="subcategory_to" class="form-control" size="12" multiple="multiple" >
+                                                        {% for cat in Subcategory%}
+                                                            {%if cat.id in idsSubCategory %}
+                                                                <option  value="{{cat.id}}">{{cat.subCategory}}({{cat.category.category}})</option>
+                                                            {%endif%}
+                                                        {%endfor%}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <style>
+                                            .imgenFile{
+                                                height: 50px;
+                                            }
+                                        </style>
+                                        {% for i in 1..5 %}
+                                            <div class="form-group">
+                                                <label>Imagen {{i}}</label>
+                                                {%set img=entity.imagenesShowNameEdit('file_'~i)%}
+                                                {%if img%}
+                                                    <div id="file_{{i}}">
+                                                        <img onclick="deleteImg('{{path('product_delete_img',{'id':img.getId()})}}', 'file_{{i}}')" class="imgenFile" src="{{asset('producto/'~img.getUrl())}}">
+                                                        <input name="file_{{i}}" type="file" style="display: none">
+                                                    </div>
+                                                {%else%}    
+                                                    <input name="file_{{i}}" type="file">
+                                                {%endif%}
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            {#
+                            
+                            SEGUNDO PANEL DE LA EAST
+                            
+                            #}
+                            <div class="col-lg-6">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        English and Spanish
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            <label>Short Description (English)</label>
+                                            <textarea class="ckeditor" cols="80" name="shortDescrip" rows="10">
+                                                {{entity.shortDescrip|raw}}
+                                            </textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Short Description (Spanish)</label>
+                                            <textarea id="description_es" name="shortdescription_es" class="ckeditor">
+                                                {{entity.shortDescripEs|raw}}
+                                            </textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Description (English)</label>
+                                            <textarea class="ckeditor" cols="80" name="description" rows="10">
+                                                {{entity.descrip|raw}}
+                                            </textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Description (Spanish)</label>
+                                            <textarea id="description_es" name="description_es" class="ckeditor">
+                                                {{entity.DescripES|raw}}
+                                            </textarea>
+                                        </div>    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <button id="btn_access" type="submit" class="btn btn-success">Save</button>
+                            <button type="reset" class="btn btn-default">Reset</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+
+
+    <script type="text/javascript">
+        function deleteImg(url, id) {
+            var a = confirm("delete imagen?")
+            if (a) {
+                $.ajax({url: url, success: function (result) {
+                        success('Image deleted');
+                        $("#" + id).html('<input name="' + id + '" type="file">');
+                    }});
+            }
+        }
+        $(document).ready(function () {
+            {% if SAVE=='guardo' %}
+                toastr['success']('', 'Saved Successful');
+            {% endif %}        
+            $('#category').multiselect({
+            });
+            $('option').click(function () {
+                // console.log($(this).parent().attr("id"));
+            })
+            $('#subcategory').multiselect();
+
+            $("#form").validate({
+                rules: {
+                    code: {
+                        required: true,
+                    },
+                    name: {
+                        required: true,
+                    },
+                    name_es: {
+                        required: true,
+                    },
+                    description: {
+                        required: true,
+                    },
+                    description_es: {
+                        required: true,
+                    },
+                    shortDescrip: {
+                        required: true,
+                    },
+                    shortdescription_es: {
+                        required: true,
+                    },
+                    file_1: {
+                        required: true,
+                    },
+                    category_to: {
+                        required: true,
+                    },
+                    subcategory_to: {
+                        required: true,
+                    },
+                },
+                messages: {
+                    confirm_password: {
+                        required: "Please provide a password",
+                        minlength: "Your password must be at least 5 characters long",
+                        equalTo: "Please enter the same password as above"
+                    },
+                },
+                submitHandler: function () {
+                    var selected=[];
+                    $('#category_to :selected').each(function(){
+                        selected[$(this).val()]=$(this).text();
+                    });
+                    if(selected.length==0){
+                        alert("you should select a category");
+                        return;
+                    }
+                    var selected=[];
+                    $('#subcategory_to :selected').each(function(){
+                        selected[$(this).val()]=$(this).text();
+                    });
+                    if(selected.length==0){
+                        alert("you should select a subcategory");
+                        return;
+                    }
+                    $("#form").submit();
+                },
+            });
+
+        });
+    </script>
+{% endblock %}

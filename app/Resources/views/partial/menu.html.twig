@@ -1,0 +1,37 @@
+<!-- Header -->
+<header class="header-wrapper">
+    <div class="main-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 col-md-3">
+                    <a href="{{path('front_homepage')}}" class="logo" title="Home Page"></a>
+                </div>
+                <div class="col-sm-8 col-md-9 ">
+                    <nav class="navbar-right">
+                        <ul class="menu menu-light">
+                            <!-- Toggle Menu - For Mobile Devices -->
+                            <li class="toggle-menu"><i class="fa icon_menu"></i></li> 
+                            <!--<li class="first">
+                                <a href="{{path('front_homepage')}}">{{ 'Home' |trans|upper }}</a>
+                            </li>-->
+                            {%for cat in category %}
+                                {% set type = 'cat' %}
+                                <li>
+                                    <a href="{{path('product',{'category':cat.showCategory(app.request.locale)|url_encode|replace(stringlist),'id':cat.id,'type':type,'page':1})}}">{{cat.showCategory(app.request.locale)|upper}}</a>
+                                    {%if cat.subcategories|length>0 %}
+                                        {% set type = 'sub' %}
+                                        <ul class="submenu">
+                                            {%for sub in cat.subcategories %}
+                                                <li><a href="{{path('product',{'category':sub.showCategory(app.request.locale)|url_encode|replace(stringlist),'id':sub.id,'type':type,'page':1})}}">{{sub.showCategory(app.request.locale)|upper}}</a></li>
+                                                {%endfor%}    
+                                        </ul>
+                                    {% endif %}
+                                </li>
+                            {%endfor%}    
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div> <!-- END Container -->
+    </div> <!-- END Main-Header -->
+</header> <!-- END Header -->

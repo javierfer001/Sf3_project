@@ -1,0 +1,9 @@
+images_index:
+    path:     /index/imagen
+    defaults: { _controller: "BackEndBundle:Images:index" }
+images_new:
+    path:     /new/{id}
+    defaults: { _controller: "BackEndBundle:Images:new" }
+images_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BackEndBundle:Images:delete" }

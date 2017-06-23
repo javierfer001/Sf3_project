@@ -1,0 +1,11 @@
+popularproduct_index:
+    path:     /
+    defaults: { _controller: "BackEndBundle:PopularProduct:index" }
+
+popularproduct_new:
+    path:     /new/{id}
+    defaults: { _controller: "BackEndBundle:PopularProduct:new" }
+
+popularproduct_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BackEndBundle:PopularProduct:delete" }

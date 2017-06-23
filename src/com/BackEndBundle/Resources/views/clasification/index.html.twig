@@ -1,0 +1,36 @@
+{% extends 'BackEndBundle::index.html.twig' %}
+
+{% block table -%}
+    <h1>Clasification list</h1>
+    <a class="btn btn-success" href="{{ path('clasification_new',{ 'id': 0} ) }}">
+        Create Clasification
+    </a>
+    <br>
+    <br>
+    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+        <thead>
+            <tr>
+                <th>Sort</th>
+                <th>Clasification</th>
+                <th>Clasification (es)</th>
+                <th style="width: 400px">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for clasification in clasifications %}
+                <tr>
+                    <td>{{ clasification.order }}</td>
+                    <td>{{ clasification.clasification }}</td>
+                    <td>{{ clasification.clasificationEs }}</td>
+                    <td>
+                        <ul>
+                            <a class="btn btn-success" href="{{ path('question_index', { 'id_clasification': clasification.id }) }}">Show Question</a>
+                            <a class="btn btn-success" href="{{ path('clasification_new', { 'id': clasification.id }) }}">edit</a>
+                            <a class="btn btn-danger" href="{{ path('clasification_delete', { 'id': clasification.id }) }}">Delete</a>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

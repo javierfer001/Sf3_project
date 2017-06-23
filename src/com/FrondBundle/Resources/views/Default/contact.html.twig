@@ -1,0 +1,173 @@
+{%extends "::base.html.twig"%}
+{% block lenguaje %}{{path('contact',{'_locale':app.request.locale=='es' ?'en':'es'})}}{% endblock %}
+{% block sitedescription %}{{'Have a question'|trans}}? {{'QuestionMessage'|trans}}{% endblock %}
+{% block welcome %}{{'Contact Us'|trans}}{% endblock %}
+
+{% block contect %}
+
+    <section class="section bg-img bg02 fixed" data-stellar-background-ratio="0.4">
+        <div class="bg-overlay op2"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1 class="title-larger title color-on-img text-center mb20 mt10">{{'Contact Us'|trans}}</h1>
+                    <div class="br-bottom-center mb0"></div>
+                    <p class="intro-p text-center mb0">{% trans from 'about'|raw%}subtitle{%endtrans%}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section mt30 page-contact mb30">
+        <div class="container">
+            <!--Space--><div class="col-md-2"></div>
+            <div class="col-md-8 mb50">
+                {%if app.request.locale=='en'%}
+                    <p class="text-center "><strong>We at J&amp;J are dedicated to providing our customers with great customer service. If you have any questions you may find an answer quicker by visiting our frequently asked questions page, or feel free to give us a call anytime during business hours.</strong></p>
+                {%else%}
+                    <p class="text-center "><strong>Nosotros en J&amp;J dedicados a proveer a nuestros clientes con un gran servicio al cliente. Si tiene cualquier pregunta que pueda encontrar una respuesta más rápida al visitar nuestra página de preguntas frecuentes, o no dude en darnos una llamada en cualquier momento durante el horario comercial.</strong></p>
+                {%endif%}
+            </div>
+            <!--Space-->
+            <div class="row mb80">
+                <div class="row col-p30">
+                    <div class="col-sm-4">
+                        <div class="mt10"></div>
+                        <div class="box-left"><i class="fa fa-map-marker"></i></div>
+                        <div class="box-right">
+                            <p><address>4738 SW 72nd Ave<br> Miami, FL 33155</address></p>
+                        </div>
+
+                        <div class="mb40"></div>
+                        <div class="box-left"><i class="fa fa-envelope-o"></i></div>
+                        <div class="box-right">
+                            <p><a href="mailto:info@jjrattan.com?Subject=JJRattan.com" target="_top">info@jjrattan.com</a><br><a href="mailto:jjrattan1976@gmail.com?Subject=JJRattan.com" target="_top">jjrattan1976@gmail.com</a></p>
+                        </div>
+
+                        <div class="mb40"></div>
+                        <div class="box-left"><i class="fa fa-phone"></i></div>
+                        <div class="box-right">
+                            <p> 305-666-7503 phone<br> 305-666-7503 fax</p>
+                        </div>
+
+                        <div class="mb40"></div>
+                        <div class="box-left"><i class="fa fa-clock-o"></i></div>
+                        <div class="box-right">
+                            <p>{{'hour'|trans|raw}}</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-8 sm-box3">
+                        <iframe id="map" class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3594.3384846988124!2d-80.31304128444741!3d25.726317716341693!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b87a7b1e91db%3A0x3347c583d4d3fd4!2sJ+%26+J+Rattan!5e0!3m2!1sen!2sus!4v1462911059384" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    {%if app.request.locale=='en'%}
+                        <p class="text-left "><strong>If you cannot reach us or would rather send us an email, please use this contact form. We will do our best to reply as soon as possible.</strong></p>
+                    {%else%}
+                        <p class="text-left "><strong>Si no puede comunicarse con nosotros o prefiere enviar un correo electrónico, por favor utilice el formulario a continuación. Haremos todo lo posible para responder lo más pronto posible.</strong></p>
+                    {%endif%}
+                    {#{%include '::partial/popular_products.html.twig'%}#}
+                </div>
+                <div class="col-md-8 xs-box3">
+                    <form class="form ajax-contact-form" method="post" action="{{asset('contactForm/contact.php')}}">
+                        <div class="alert alert-success hidden" id="contact-success">
+                            <span class="glyphicon glyphicon-ok "></span> &nbsp;
+                            <strong>{{'Success'|trans}}</strong> {{'Thanks'|trans}}
+                        </div>
+                        <div class="alert alert-danger hidden" id="contact-error">
+                            <span class="glyphicon glyphicon-remove "></span> &nbsp;
+                            <strong>{{'Error'|trans}}</strong> {{'Oops'|trans}}Error!</strong>
+                        </div>
+                        <div class="row col-p10">
+                            <div class="col-sm-6">
+                                <label class="mb10"><input type="text" name="val_fname" id="val_fname" class="form-control" placeholder=" {{'First Name'|trans}}"></label>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="mb10"><input type="text" name="val_lname" id="val_lname" class="form-control" placeholder=" {{'Last Name'|trans}}"></label>
+                            </div>
+                        </div>
+                        <div class="row col-p10">
+                            <div class="col-sm-6">
+                                <label class="mb10"><input type="text" name="val_subject" id="val_subject" required class="form-control" placeholder=" {{'Subject'|trans}} *"></label>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="mb10"><input type="email" name="val_email" id="val_email" required class="form-control" placeholder=" {{'Email Address'|trans}} *"></label>
+                            </div>
+                        </div>
+                        <label>
+                            <textarea name="val_message" id="val_message"  cols="30" rows="10" required class="form-control" placeholder=" {{'Message'|trans}} *"></textarea>
+                        </label>
+                        <div class="mt20 clearfix">
+                            <!-- Enter your google site key here for captcha -->
+                            <div class="g-recaptcha" data-sitekey="6LfyCR8TAAAAACBYP4dzxMoo2wwnOSrcpdlnDsR9"></div>
+                            <div class="mb30"></div>
+                            <button type="submit" class="btn btn-d">{{'SUBMIT'|trans}}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src='https://www.google.com/recaptcha/api.js'></script>
+{% endblock %} 
+{% block javascript %}
+    // Google map
+    if ($('#googleMap').length > 0) { 
+
+    //set your google maps parameters
+    var $latitude = 25.726312,
+    $longitude = -80.310852,
+    $latitude = 25.726312,
+    $longitude = -80.310852,
+    $latitude = 25.726312,
+    $longitude = -80.310852,
+    $map_zoom = 15; /* ZOOM SETTING */
+
+    //google map custom marker icon 
+    var $marker_url = '{{asset('img/map-marker.png')}}';
+
+    //we define here the style of the map
+    var style = [{
+    "stylers": [{
+    "hue": "#000000"
+    }, {
+    "saturation": 10
+    }, {
+    "gamma": 2.15
+    }, {
+    "lightness": 12
+    }]
+    }];
+
+    25.8844435
+
+    //set google map options
+    var map_options = {
+    center: new google.maps.LatLng($latitude, $longitude),
+    zoom: $map_zoom,
+    panControl: true,
+    zoomControl: true,
+    mapTypeControl: false,
+    streetViewControl: true,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    scrollwheel: false,
+    // styles: style,
+    }
+
+
+    //initialize the contact page map
+    var mainMap = new google.maps.Map(document.getElementById('googleMap'), map_options);              
+    new google.maps.Marker({
+    position: new google.maps.LatLng($latitude, $longitude),
+    map: mainMap,
+    visible: true,
+    icon: $marker_url,
+    });
+    }
+{% endblock %} 
+

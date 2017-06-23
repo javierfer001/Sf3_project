@@ -1,0 +1,79 @@
+{% extends "MetronicBundle:Default:index.html.twig"%}
+{% block content %}
+    <div class="row">
+        <div class="col-md-10 col-sm-12">
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <div class="portlet box red">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-cogs"></i>Clasificacion Of Question</div>
+                    <div class="actions">
+                        <a href="{{path('clasification_new_metronic',{'id':0})}}" class="btn btn-default btn-sm">
+                            <i class="fa fa-plus"></i> Add </a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <table class="table table-striped table-bordered table-hover table-checkable order-column" id="table_manager">
+                        <thead>
+                        <th>Sort</th>
+                        <th>Clasification</th>
+                        <th>Clasification (es)</th>
+                        <th style="width: 300px">Actions</th>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block script_execute %}
+    <script>
+        var table;
+        jQuery(document).ready(function () {
+            table = $('#table_manager').DataTable({
+                "lengthMenu": [
+                    [10, 20, 30, 50],
+                    [10, 20, 30, 50] // change per page values here
+                ],
+                "processing": true,
+                "serverSide": true,
+                "ajax": {
+                    "url": "{{path('clasification_pagination_metronic')}}",
+                    // "type": "POST"
+                },
+                "pageLength": 10,
+                "order": [
+                    [1, "asc"]
+                ] // set first column as a default sort by asc
+            });
+        });
+        
+        function deleteAction(id) {
+            bootbox.confirm("Are you sure?", function (result) {
+                bPreguntar = false;
+                if (result == true) {
+                    App.blockUI({
+                        target: ".portlet-body",
+                        boxed: !0,
+                        textOnly: !0,
+                        message: "Delete..."
+                    });
+
+                    $.ajax({
+                        method: "POST",
+                        url: "{{path('clasification_delete_metronic')}}",
+                        dataType: "JSON",
+                        data: {
+                            'id': id,
+                        },
+                        success: function (response) {
+                            table.ajax.reload(null, false);
+                            App.unblockUI(".portlet-body");
+
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+{% endblock %}

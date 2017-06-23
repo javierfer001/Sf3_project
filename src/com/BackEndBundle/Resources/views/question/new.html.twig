@@ -1,0 +1,34 @@
+{% extends 'BackEndBundle::data.html.twig' %}
+
+{% block data -%}
+    <h1>Question ("{{clasification.clasification}}")</h1>
+    <a class="btn btn-danger" href="{{ path('question_index',{'id_clasification':id_clasification}) }}">
+        Back to the list
+    </a>
+    <br>
+    <br>
+    <form role="form" method="POST">
+        <div class="form-group">
+            <label>Order</label>
+            <input name="order" class="form-control" value="{{entity.id==0?(question[0].order|default(0)+1):entity.order}}" placeholder="Order">
+        </div>
+        <div class="form-group">
+            <label>Question (English)</label>
+            <textarea class="form-control" cols="80" name="clasification" rows="10">{{-entity.question|raw -}}</textarea>
+        </div>
+        <div class="form-group">
+            <label>Question (Spanish)</label>
+            <textarea class="form-control" cols="80" name="clasification_es" rows="10">{{entity.questionEs|raw}}</textarea>
+        </div>
+        <div class="form-group">
+            <label>Response (English)</label>
+            <textarea class="form-control" cols="80" name="response" rows="10">{{entity.response|raw}}</textarea>
+        </div>
+        <div class="form-group">
+            <label>Response (Spanish)</label>
+            <textarea class="form-control" cols="80" name="response_es" rows="10">{{entity.responseEs|raw}}</textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Save</button>
+        <button type="reset" class="btn btn-default">Reset</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,18 @@
+product_index:
+    path:     /
+    defaults: { _controller: "BackEndBundle:Product:index" }
+product_new:
+    path:     /new
+    defaults: { _controller: "BackEndBundle:Product:new" }
+product_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BackEndBundle:Product:edit" }
+product_save:
+    path:     /{id}/save
+    defaults: { _controller: "BackEndBundle:Product:save" }
+product_delete_img:
+    path:     /{id}/imagen/delete
+    defaults: { _controller: "BackEndBundle:Product:deleteImagen" }    
+product_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BackEndBundle:Product:delete" }

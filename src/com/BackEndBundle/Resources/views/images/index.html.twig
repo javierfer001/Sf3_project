@@ -1,0 +1,36 @@
+{% extends 'BackEndBundle::index.html.twig' %}
+
+{% block table -%}
+    <h1>Images list</h1>
+
+    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+        <thead>
+            <tr>
+                <th>Url</th>
+                <th>Description</th>
+                <th>Alt</th>
+                <th style="width: 128px">Actions</th>
+            </tr>
+        </thead>
+        <style>
+            td img{
+               width: 70px; 
+               
+            }
+        </style>
+        <tbody>
+            {% for image in images %}
+                <tr>
+                    <td><img src="{{ asset('producto/'~image.url) }}"/></td>
+                    <td>{{ image.description }}</td>
+                    <td>{{ image.alt }}</td>
+                    <td>
+                        <a class="btn btn-success" href="{{ path('images_new', { 'id': image.id }) }}">edit</a>
+                        <a class="btn btn-danger" href="{{ path('images_delete', { 'id': image.id }) }}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

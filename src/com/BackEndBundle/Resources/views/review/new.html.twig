@@ -1,0 +1,65 @@
+{% extends 'BackEndBundle::data.html.twig' %}
+
+{% block data -%}
+    <h1>Review</h1>
+    <a class="btn btn-danger" href="{{ path('review_index',{id_prod:0}) }}">
+        Back to the list
+    </a>
+    <br>
+    <br>
+    <form role="form" method="POST">
+        <table style="width: 100%">
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input name="name" class="form-control" value="{{entity.name}}" placeholder="English">
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input type="date" name="date" class="form-control" value="{{entity.date}}" placeholder="English">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label>Start</label>
+                        <input type="number" name="start" name="quantity" min="1" max="5" class="form-control" value="{{entity.start}}" placeholder="English">
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <label>Coment</label>
+                        <textarea name="coment" class="form-control">{{entity.coment}}</textarea>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input name="email" class="form-control" value="{{entity.email}}" placeholder="email">
+                    </div>
+                </td>
+                <td>
+                </td>
+            </tr>
+        </table>
+            <label>Public</label>
+            <input type="checkbox" name="public" {{entity.public==1?'checked="checked"':''}}>
+            <br>
+        <button type="submit" class="btn btn-success">Save</button>
+        <button type="reset" class="btn btn-default">Reset</button>
+    </form>
+
+    {%if saveOK|default(false)%}              
+        <script>
+            $(document).ready(function () {
+                toastr['success']('', 'Save OK');
+            });
+        </script>
+    {%endif%}
+{% endblock %}

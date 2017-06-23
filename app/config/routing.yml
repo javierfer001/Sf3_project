@@ -1,0 +1,33 @@
+metronic:
+    resource: "@MetronicBundle/Resources/config/routing.yml"
+    prefix:   /metronic
+
+back_end:
+    resource: "@BackEndBundle/Resources/config/routing.yml"
+    prefix:   /backend
+login_admin:
+    path:     /admin/login/
+    defaults: { _controller: BackEndBundle:Default:index }  
+login_check:
+    path: /admin/check
+logout:
+    path:  /logout
+denegado:
+    path:  /denegado
+    defaults: { _controller: DesymfonyBundle:Usuario:denegado }
+front_homepage:
+    path:     /{_locale}
+    defaults: { _controller: FrondBundle:Default:index, _locale: en }
+    requirements:
+        _locale: en|es     
+front:
+    resource: "@FrondBundle/Resources/config/routing.yml"
+    prefix:   /
+    
+   
+    
+
+
+
+    
+

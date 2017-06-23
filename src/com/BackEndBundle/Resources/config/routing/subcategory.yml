@@ -1,0 +1,11 @@
+subcategory:
+    path:     /index/{idCategory}
+    defaults: { _controller: "BackEndBundle:SubCategory:index" }
+
+subcategory_new:
+    path:     /new/{idCategory}/{name}/{id}
+    defaults: { _controller: "BackEndBundle:SubCategory:new" }
+
+subcategory_delete:
+    path:     /{id}/delete/{idCategory}
+    defaults: { _controller: "BackEndBundle:SubCategory:delete" }

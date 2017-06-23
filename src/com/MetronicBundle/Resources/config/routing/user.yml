@@ -1,0 +1,27 @@
+user:
+    path:     /index
+    defaults: { _controller: "BackEndBundle:User:index" }
+user_show:
+    path:     /{id}/show
+    defaults: { _controller: "BackEndBundle:User:show" }
+
+user_new:
+    path:     /new
+    defaults: { _controller: "BackEndBundle:User:new" }
+
+user_create:
+    path:     /create
+    defaults: { _controller: "BackEndBundle:User:create" }
+    requirements: { _method: post }
+
+user_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BackEndBundle:User:edit" }
+
+user_update:
+    path:     /{id}/update
+    defaults: { _controller: "BackEndBundle:User:update" }
+
+user_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BackEndBundle:User:delete" }

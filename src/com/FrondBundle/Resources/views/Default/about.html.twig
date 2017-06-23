@@ -1,0 +1,239 @@
+{%extends "::base.html.twig"%}
+{% block lenguaje %}{{path('about',{'_locale':app.request.locale=='es' ?'en':'es'})}}{% endblock %}
+{% block sitedescription%}{{'About Us'|trans}}! {{'TeamMessage'|trans}}{% endblock %}
+{% block welcome %}{{'About Us'|trans}}{% endblock %}
+
+{% block contect %}
+
+    <section class="section bg-img bg02 fixed" data-stellar-background-ratio="0.4">
+        <div class="bg-overlay op2"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="title-larger title color-on-img text-center mb20 mt10">{{'About Us'|trans}}</h1>
+                    <div class="br-bottom-center mb0"></div>
+                    <p class="intro-p text-center mb0">{% trans from 'about'|raw%}subtitle{%endtrans%}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section mt30">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7 sm-box2 pt30">
+                    <h2 class="title-medium br-bottom">{% trans from 'about'|raw%}Our Store{%endtrans%}</h2>
+                    {% trans from 'about'|raw%}History{%endtrans%}
+                </div>
+                <div class="col-sm-5">
+                    <div class="owl-carousel owl-portfolio mt10">
+                        <div class="owl-el"><img src="{{asset('images/about-store/about2.jpg')}}" alt="about image"></div>
+                        <div class="owl-el"><img src="{{asset('images/about-store/about0.jpg')}}" alt="about image"></div>
+                        <div class="owl-el"><img src="{{asset('images/about-store/about5.jpg')}}" alt="about image"></div>
+                        <div class="owl-el"><img src="{{asset('images/about-store/about3.JPG')}}" alt="about image"></div>
+                    </div>
+                </div>
+                    <div class="col-sm-12 mt30 pt30">
+                        <!-- LightWidget WIDGET -->
+                        <script src="//lightwidget.com/widgets/lightwidget.js"></script>
+                        <iframe src="//lightwidget.com/widgets/a1bc8415a3375aac86ebc548424ca853.html" id="lightwidget_a1bc8415a3" name="lightwidget_a1bc8415a3"  scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width: 100%; border: 0; overflow: hidden;"></iframe>
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="row mb20">
+                <div class="col-sm-12"><div class="divider d4 "></div>
+                    <h2 class="title-medium br-bottom">{% trans from 'about'|raw%}Meet Our Team{%endtrans%}</h2>
+                </div>
+            </div>
+            <div class="row col-p5">
+                <div class="team-section team-section-3 portfolio portfolio-animation-off portfolio-center">
+                    <div class="hidden-xs hidden-sm col-md-1"></div><!-- Space to maintain in middle -->
+                    <div class="col-sm-4 col-md-2">
+                        <div class="portfolio-el mb20 view">
+                            <img src="{{asset('images/employees/empty-image.jpg')}}" alt="photo of">
+                            <a href="" class="mask">
+                                <div class="portfolio-middle">
+                                    <h3 class="project-title">Iraida Borges</h3>
+                                    <div class="br-bottom-center"></div>
+                                    <p class="text">{% trans from 'about'|raw%}Iraida{%endtrans%}</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div> <!-- END portfolio Item -->
+                    <div class="col-sm-4 col-md-2">
+                        <div class="portfolio-el mb20 view">
+                            <img src="{{asset('images/employees/empty-image.jpg')}}" alt="photo of">
+                            <a href="" class="mask">
+                                <div class="portfolio-middle">
+                                    <h3 class="project-title">Janette Venegas</h3>
+                                    <div class="br-bottom-center"></div>
+                                    <p class="text">{% trans from 'about'|raw%}Janette{%endtrans%}</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div> <!-- END portfolio Item -->
+                    <div class="col-sm-4 col-md-2">
+                        <div class="portfolio-el mb20 view">
+                            <img src="{{asset('images/employees/empty-image.jpg')}}" alt="photo of">
+                            <a href="" class="mask">
+                                <div class="portfolio-middle">
+                                    <h3 class="project-title">Nicole Paez</h3>
+                                    <div class="br-bottom-center"></div>
+                                    <p class="text">{% trans from 'about'|raw%}Nicole{%endtrans%}</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div> <!-- END portfolio Item -->
+                    <div class="col-sm-4 col-md-2">
+                        <div class="portfolio-el mb20 view">
+                            <img src="{{asset('images/employees/empty-image.jpg')}}" alt="photo of">
+                            <a href="" class="mask">
+                                <div class="portfolio-middle">
+                                    <h3 class="project-title">Nereyda Arocha</h3>
+                                    <div class="br-bottom-center"></div>
+                                    <p class="text">{% trans from 'about'|raw%}Nereyda{%endtrans%}</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div> <!-- END portfolio Item -->
+                    <div class="col-sm-4 col-md-2">
+                        <div class="portfolio-el mb20 view">
+                            <img src="{{asset('images/employees/empty-image.jpg')}}" alt="photo of">
+                            <a href="" class="mask">
+                                <div class="portfolio-middle">
+                                    <h3 class="project-title">Alex Martinez</h3>
+                                    <div class="br-bottom-center"></div>
+                                    <p class="text">{% trans from 'about'|raw%}Alex{%endtrans%}</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div> <!-- END portfolio Item -->
+                </div> <!-- END portfolio -->
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section-testimonials pb30 mb20"> 
+        <div class="container"><div class="divider d4"></div>
+            <div class="row pt20">
+                <div class="col-sm-12 pt30">
+                    {%if app.request.locale=='es'%}
+                        <div class="alert alert-warning alert-dismissable fade in">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <strong>Avertencia!</strong> Testimonios no se traducirán.
+                        </div>
+                    {%endif%} 
+                    <!-- Testimonials -->
+                    {%include '::partial/testimonials.html.twig'%}
+                </div>
+            </div>
+        </div>
+    </section>
+    {#                
+        <section class="section-bg mt40 section-gray stats-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-6 col-sm-3 xs-box">
+                        <div class="section-boxed section-dark">
+                            <div class="br-bottom mb20 mt20"></div>
+                            <h3 class="title-uppercased color-on-dark">{% trans from 'about'|raw%}Estimate{%endtrans%}</h3>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-3 xs-box">
+                        <div class="stats-content">
+                            <i class="fa fa-support"></i>
+                            <p class="stats-timer" data-to="40" data-speed="4000"></p>
+                            <div class="br-bottom-center"></div>
+                            <h3>{% trans from 'about'|raw%}Years In Business{%endtrans%}</h3>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-3 xs-box">
+                        <div class="stats-content">
+                            <i class="fa fa-thumbs-up"></i>
+                            <p class="stats-timer" data-to="439500" data-speed="4000"></p>
+                            <div class="br-bottom-center"></div>
+                            <h3>{% trans from 'about'|raw%}Served Customers{%endtrans%}</h3>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <div class="stats-content">
+                            <i class="fa fa-group"></i>
+                            <p class="stats-timer" data-to="1440" data-speed="3500"></p>
+                            <div class="br-bottom-center"></div>
+                            <h3>{% trans from 'about'|raw%}Store Projects{%endtrans%}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <section class="section">
+            <div class="container">
+                <div class="row mb20">
+                    <div class="col-sm-12">
+                        <h2 class="title-medium br-bottom">{% trans from 'about'|raw%}Gallery{%endtrans%}</h2>
+                    </div>
+                    <div class="col-sm-4 mb20">
+                        <a class="fancybox mask" rel="gallery"  href="{{asset('images/projects/1.jpg')}}">
+                            <img class="img-thumbnail" alt="" src="{{asset('images/projects/1.jpg')}}">
+                        </a>
+                    </div>
+                    <div class="col-sm-4 mb20">
+                        <a class="fancybox mask" rel="gallery"  href="{{asset('images/projects/1.jpg')}}">
+                            <img class="img-thumbnail" alt="" src="{{asset('images/projects/1.jpg')}}">
+                        </a>
+                    </div>
+                    <div class="col-sm-4 mb20">
+                        <a class="fancybox mask" rel="gallery"  href="{{asset('images/projects/1.jpg')}}">
+                            <img class="img-thumbnail" alt="" src="{{asset('images/projects/1.jpg')}}">
+                        </a>
+                    </div>
+                    <div class="col-sm-4 mb20">
+                        <img class="img-thumbnail" alt="" src="{{asset('images/projects/1.jpg')}}">
+                    </div>
+                    <div class="col-sm-4 mb20">
+                        <img class="img-thumbnail" alt="" src="{{asset('images/projects/1.jpg')}}">
+                    </div>
+                    <div class="col-sm-4 mb20">
+                        <img class="img-thumbnail" alt="" src="{{asset('images/projects/1.jpg')}}">
+                    </div>
+                    <div class="col-sm-4 mb20">
+                        <img class="img-thumbnail" alt="" src="{{asset('images/projects/1.jpg')}}">
+                    </div>
+                    <div class="col-sm-4 mb20">
+                        <img class="img-thumbnail" alt="" src="{{asset('images/projects/1.jpg')}}">
+                    </div>
+                    <div class="col-sm-4 mb20">
+                        <img class="img-thumbnail" alt="" src="{{asset('images/projects/1.jpg')}}">
+                    </div>
+                    <div class="col-sm-4 mb20">
+                        <img class="img-thumbnail" alt="" src="{{asset('images/projects/1.jpg')}}">
+                    </div>
+                    <div class="col-sm-4 mb20">
+                        <img class="img-thumbnail" alt="" src="{{asset('images/projects/1.jpg')}}">
+                    </div>
+                    <div class="col-sm-4 mb20">
+                        <img class="img-thumbnail" alt="" src="{{asset('images/projects/1.jpg')}}">
+                    </div>
+                </div>
+            </div>
+        </section>
+        #}
+{% endblock %}    
+
+{% block script_utility %}
+    <link rel="stylesheet" type="text/css" href="{{asset('js/fancybox/jquery.fancybox.css?v=2.1.5')}}" media="screen" />
+    <link rel="stylesheet" type="text/css" href="{{asset('js/fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5')}}" media="screen" />
+    <script src="{{asset('js/fancybox/jquery.fancybox.js?v=2.1.5')}}"></script>
+    <script src="{{asset('js/fancybox/helpers/jquery.fancybox-buttons.js?v=1.0.5')}}"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.fancybox').fancybox();
+        });
+    </script>
+{% endblock %} 

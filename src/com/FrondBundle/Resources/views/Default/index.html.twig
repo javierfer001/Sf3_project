@@ -1,0 +1,305 @@
+{%extends "::base.html.twig"%}
+{% block lenguaje %}{{path('front_homepage',{'_locale':app.request.locale=='es' ?'en':'es'})}}{% endblock %}
+{% block welcome %}{{'Welcome'|trans}}{% endblock %}
+
+
+{% block contect %}
+
+    <!-- Banner -->
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="tp-banner-container rs_boxed">
+                        <div class="tp-banner">
+                            <ul>
+                                <!-- SLIDE 1 -->
+                                <li data-transition="boxslide" data-slotamount="7" data-delay="3900" data-title="">
+                                    <!-- Background Image -->
+                                    <img src="{{asset('images/slider/intro_left.jpg')}}" data-bgposition="right bottom" data-bgfit="cover" data-bgrepeat="no-repeat" alt="">
+
+                                    <div class="tp-caption sft stt"
+                                         data-x="left" data-hoffset="100"
+                                         data-y="center" data-voffset="0" 
+                                         data-speed="500" data-start="600"
+                                         data-endspeed="500" data-end="3900"
+                                         data-easing="Power4.easeInOut" data-endeasing=""
+                                         style="z-index: 1">
+                                        <h1 class="title-slider-large border-bottom uppercased"> J&amp;J R a t t a n </h1>
+                                    </div>
+                                    <div class="tp-caption sft stb"
+                                         data-x="left" data-hoffset="100"
+                                         data-y="center" data-voffset="150"
+                                         data-speed="500" data-start="1000"
+                                         data-endspeed="450" data-end="3900"
+                                         data-easing="Power4.easeOut"
+                                         style="z-index: 2">
+                                        <h2 class="title-slider-medium uppercased">Where nature meets design</h2>
+                                    </div>
+                                </li>
+
+                                <!-- SLIDE 2 -->
+                                <li data-transition="fade" data-slotamount="7" data-masterspeed="700" data-delay="8000" data-title="">
+                                    <!-- Background Image -->
+                                    <img src="{{asset('images/slider/slider3.jpg')}}" data-bgposition="left center" data-bgfit="cover" data-bgrepeat="no-repeat" alt="">
+
+                                </li>
+
+                                <!-- SLIDE 3 -->
+                                <li data-transition="parallaxtoright" data-masterspeed="700" data-slotamount="7" data-delay="8000" data-title="">
+                                    <!-- Background Image -->
+                                    <img src="{{asset('images/slider/slider5.jpg')}}" data-bgposition="left bottom" data-bgfit="cover" data-bgrepeat="no-repeat" alt="">
+
+                                </li>
+
+                                <!-- SLIDE 4 -->
+                                <li data-transition="parallaxtoleft" data-masterspeed="700" data-slotamount="7" data-delay="8000" data-title="">
+                                    <!-- Background Image -->
+                                    <img src="{{asset('images/slider/slider4.jpg')}}" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" alt="">
+                                    
+                                </li>
+                                
+                                <!-- SLIDE 5 -->
+                                <li data-transition="3dcurtain-vertical" data-masterspeed="700" data-slotamount="7" data-delay="8000" data-title="">
+                                    <!-- Background Image -->
+                                    <img src="{{asset('images/slider/slider7.jpg')}}" data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="no-repeat" alt="">
+                                    
+                                </li>
+                                
+                                <!-- SLIDE Intro -->
+                                <li data-transition="cubic-horizontal" data-masterspeed="700" data-slotamount="7" data-delay="3900" data-title="">
+                                    <!-- Background Image -->
+                                    <img src="{{asset('images/slider/intro_right.jpg')}}" data-bgposition="right bottom" data-bgfit="cover" data-bgrepeat="no-repeat" alt="">
+
+                                    <div class="tp-caption sft stt"
+                                         data-x="right" data-hoffset="-100"
+                                         data-y="center" data-voffset="0" 
+                                         data-speed="500" data-start="600"
+                                         data-endspeed="500" data-end="3900"
+                                         data-easing="Power4.easeInOut" data-endeasing=""
+                                         style="z-index: 1">
+                                        <h1 class="title-slider-large border-bottom uppercased"> J&amp;J R a t t a n </h1>
+                                    </div>
+                                    <div class="tp-caption sft stb"
+                                         data-x="right" data-hoffset="-100"
+                                         data-y="center" data-voffset="150"
+                                         data-speed="500" data-start="1000"
+                                         data-endspeed="450" data-end="3900"
+                                         data-easing="Power4.easeOut"
+                                         style="z-index: 2">
+                                        <h2 class="title-slider-medium uppercased">Where nature meets design</h2>
+                                    </div>
+                                </li>
+                                
+                                <!-- SLIDE 6 -->
+                                <li data-transition="curtain-1" data-masterspeed="700" data-slotamount="7" data-delay="8000" data-title="">
+                                    <!-- Background Image -->
+                                    <img src="{{asset('images/slider/slider8.jpg')}}" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" alt="">
+                                    
+                                </li>
+                                
+                                <!-- SLIDE 7 -->
+                                <li data-transition="curtain-2" data-masterspeed="700" data-slotamount="7" data-delay="8000" data-title="">
+                                    <!-- Background Image -->
+                                    <img src="{{asset('images/slider/slider9.jpg')}}" data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="no-repeat" alt="">
+                                    
+                                </li>
+                                
+                                 <!-- SLIDE 8 -->
+                                <li data-transition="flyin" data-masterspeed="700" data-slotamount="7" data-delay="8000" data-title="">
+                                    <!-- Background Image -->
+                                    <img src="{{asset('images/slider/slider10.jpg')}}" data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="no-repeat" alt="">
+                                    
+                                </li>
+                                
+                                <!-- SLIDE 9 -->
+                                <li data-transition="turnoff-vertical" data-masterspeed="700" data-slotamount="7" data-delay="8000" data-title="">
+                                    <!-- Background Image -->
+                                    <img src="{{asset('images/slider/slider11.jpg')}}" data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="no-repeat" alt="">
+                                    
+                                </li>
+                                
+                                {# Comment Out <!-- SLIDE 10 -->
+                                <li data-transition="3dcurtain-vertical" data-masterspeed="700" data-slotamount="7" data-delay="8000" data-title="">
+                                    <!-- Background Image -->
+                                    <img src="{{asset('images/slider/slider12.jpg')}}" data-bgposition="left top" data-bgfit="cover" data-bgrepeat="no-repeat" alt="">
+                                    
+                                </li> #}
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!-- END Banner -->
+
+    <section class="section">
+        <div class="container">
+            <div class="row col-p30">
+                <div class="col-sm-4 xs-box2 br-box">
+                    <div class="box-services-c">
+                        <a href="{{path('faq')}}">
+                            <i class="fa icon_question_alt2 fa-style4"></i>
+                            <h3 class="title-small br-bottom-center">{{'Have a question'|trans}}</h3>
+                            <p>{{'QuestionMessage'|trans}}</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-sm-4 xs-box2 br-box">
+                    <div class="box-services-c">
+                        <a href="http://jjrattan.com/web/en/Furniture/show/1/cat/1">
+                            <i class="fa icon_building fa-style4"></i>
+                            <h3 class="title-small br-bottom-center">{{'Explore Our Store'|trans}}</h3>
+                            <p>{{'ExploreMessage'|trans}}</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-sm-4 br-box-last">
+                    <div class="box-services-c">
+                        <a href="{{path('about')}}">
+                            <i class="fa icon_id fa-style4"></i>
+                            <h3 class="title-small br-bottom-center">{{'Meet Our Team'|trans}}</h3>
+                            <p>{{'TeamMessage'|trans}}</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Projects -->
+    <section class="section">
+        <div class="container">
+            <div class="row mb30">
+                <div class="col-sm-6">
+                    <h3 class="title-medium br-bottom">{{'Our Projects'|trans}}</h3>
+                </div>
+                <div class="col-sm-6">
+                    <div class="clearfix">
+                        <!--<div class="pull-right xs-pull-left">
+                            <nav class="portfolio-filter pf2">
+                                <ul>
+                                    <li class="xs-pl0"><a href="#" data-filter="*" class="active"><i class="fa fa-bars"></i>&nbsp&nbsp&nbsp {{'Recently Added'|trans}}</a></li>
+                                    <li><span> / </span></li>
+                                    <li><a href="#" data-filter=".plant_">{{'Plants'|trans}}</a></li>
+                                    <li><span> / </span></li>
+                                    <li class="pr0"><a href="#" data-filter=".orchid_" class="pr0">{{'Orchids'|trans}}</a></li>
+                                </ul>
+                            </nav>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="portfolio-isotope">
+                        <div class="row col-p5">
+                            <div class="portfolio columns-3">
+                                <div class="col-sm-6 col-md-4 el orchid_ indoor_">
+                                    <div class="portfolio-el view">
+                                        <img class="img-thumbnail" alt="alt" src="{{asset('images/projects/1.jpg')}}">
+                                        <a class="fancybox mask" rel="gallery"  title="White Orchid Arrangement - 1" href="{{asset('images/projects/1.jpg')}}" >
+                                            <div class="portfolio-middle">
+                                                <h3 class="project-title br-bottom">White Orchid Arrangement - 1</h3>
+                                                <p class="text">design, photography, indoor decor</p>
+                                            </div>
+                                            <p class="date">Jan 2016</p>
+                                        </a>
+                                    </div>
+                                </div> <!-- END portfolio Item -->
+                                <div class="col-sm-6 col-md-4 el indoor_ plant_">
+                                    <div class="portfolio-el view">
+                                        <img class="img-thumbnail" alt="alt" src="{{asset('images/projects/15.jpg')}}">
+                                        <a class="fancybox mask" rel="gallery"  title="White Orchid Arrangement - 2" href="{{asset('images/projects/15.jpg')}}" >
+                                            <div class="portfolio-middle">
+                                                <h3 class="project-title br-bottom">White Orchid Arrangement - 2</h3>
+                                                <p class="text">design, indoor decor</p>
+                                            </div>
+                                            <p class="date">Jan 2016</p>
+                                        </a>
+                                    </div>
+                                </div> <!-- END portfolio Item -->
+                                <div class="col-sm-6 col-md-4 el orchid_ indoor_">
+                                    <div class="portfolio-el view">
+                                        <img class="img-thumbnail" alt="alt" src="{{asset('images/projects/2.jpg')}}">
+                                        <a class="fancybox mask" rel="gallery"  title="White Orchid Arrangement - 3" href="{{asset('images/projects/2.jpg')}}" >
+                                            <div class="portfolio-middle">
+                                                <h3 class="project-title br-bottom">White Orchid Arrangement - 3</h3>
+                                                <p class="text">design, photography, indoor decor</p>
+                                            </div>
+                                            <p class="date">Jan 2016</p>
+                                        </a>
+                                    </div>
+                                </div> <!-- END portfolio Item -->
+                                <div class="col-sm-6 col-md-4 el indoor_ plant_">
+                                    <div class="portfolio-el view">
+                                        <img class="img-thumbnail" alt="alt" src="{{asset('images/projects/14.jpg')}}">
+                                        <a class="fancybox mask" rel="gallery"  title="White Orchid Arrangement - 4" href="{{asset('images/projects/14.jpg')}}" >
+                                            <div class="portfolio-middle">
+                                                <h3 class="project-title br-bottom">White Orchid Arrangement - 4</h3>
+                                                <p class="text">design, photography, indoor decor</p>
+                                            </div>
+                                            <p class="date">Jan 2016</p>
+                                        </a>
+                                    </div>
+                                </div> <!-- END portfolio Item -->
+                                <div class="col-sm-6 col-md-4 el indoor_ orchid_">
+                                    <div class="portfolio-el view">
+                                        <img class="img-thumbnail" alt="alt" src="{{asset('images/projects/11.jpeg')}}">
+                                        <a class="fancybox mask" rel="gallery"  title="White Orchid Arrangement - 5" href="{{asset('images/projects/11.jpeg')}}" >
+                                            <div class="portfolio-middle">
+                                                <h3 class="project-title br-bottom">White Orchid Arrangement - 5</h3>
+                                                <p class="text">design, indoor decor</p>
+                                            </div>
+                                            <p class="date">Jan 2016</p>
+                                        </a>
+                                    </div>
+                                </div> <!-- END portfolio Item -->
+                                <div class="col-sm-6 col-md-4 el indoor_ plant_">
+                                    <div class="portfolio-el view">
+                                        <img class="img-thumbnail" alt="alt" src="{{asset('images/projects/12.jpg')}}">
+                                        <a class="fancybox mask" rel="gallery"  title="White Orchid Arrangement - 6" href="{{asset('images/projects/12.jpg')}}" >
+                                            <div class="portfolio-middle">
+                                                <h3 class="project-title br-bottom">White Orchid Arrangement - 6</h3>
+                                                <p class="text">design, photography, indoor decor</p>
+                                            </div>
+                                            <p class="date">Jan 2016</p>
+                                        </a>
+                                    </div>
+                                </div> <!-- END portfolio Item -->
+                            </div> <!-- END portfolio -->
+                        </div>
+                    </div> <!-- END Portfolio Isotope -->
+                </div>
+            </div>
+        </div>
+    </section><!-- END Projects -->
+
+    <!-- Testimonials -->
+    <section class="section mb40">    
+        <div class="container">
+            <div class="row mb20 mt20">
+                <div class="col-sm-12">
+                    {%include '::partial/testimonials.html.twig'%}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END Testimonials --> 
+
+{% endblock %}
+{% block script_utility %}
+    <script src="{{asset('js/fancybox/jquery.fancybox.js?v=2.1.5')}}"></script>
+    <script src="{{asset('js/fancybox/helpers/jquery.fancybox-buttons.js?v=1.0.5')}}"></script>
+    <link rel="stylesheet" type="text/css" href="{{asset('js/fancybox/jquery.fancybox.css?v=2.1.5')}}" media="screen" />
+    <link rel="stylesheet" type="text/css" href="{{asset('js/fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5')}}" media="screen" />
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.fancybox').fancybox();
+        });
+    </script>
+{% endblock %} 

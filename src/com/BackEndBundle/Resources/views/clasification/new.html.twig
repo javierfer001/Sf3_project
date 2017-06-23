@@ -1,0 +1,26 @@
+{% extends 'BackEndBundle::data.html.twig' %}
+
+{% block data -%}
+    <h1>Clasification</h1>
+    <a class="btn btn-danger" href="{{ path('clasification_index') }}">
+        Back to the list
+    </a>
+    <br>
+    <br>
+    <form role="form" method="POST">
+        <div class="form-group">
+            <label>Order</label>
+            <input name="order" class="form-control" value="{{entity.id==0?(clasification[0].order|default(0)+1):entity.order}}" placeholder="Order">
+        </div>
+        <div class="form-group">
+            <label>Clasification (English)</label>
+            <input name="clasification" class="form-control" value="{{entity.clasification}}" placeholder="English">
+        </div>
+        <div class="form-group">
+            <label>Clasification (Spanish)</label>
+            <input name="clasification_es" class="form-control" value="{{entity.clasificationEs}}" placeholder="Spanish">
+        </div>
+        <button type="submit" class="btn btn-success">Save</button>
+        <button type="reset" class="btn btn-default">Reset</button>
+    </form>
+{% endblock %}

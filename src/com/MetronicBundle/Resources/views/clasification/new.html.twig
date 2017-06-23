@@ -1,0 +1,44 @@
+{% extends "MetronicBundle:Default:index.html.twig"%}
+{% block content %}
+    <a class="btn btn-default" href="{{path('clasification_index_metronic')}}" style="color: green"><i class="fa fa-arrow-left"></i> Go Back</a>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <div class="portlet box red">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-cogs"></i>Data Clasification
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <form role="form" method="POST">
+                        <div class="form-group">
+                            <label>Order</label>
+                            <input name="order" class="form-control" value="{{entity.id==0?(clasification[0].order|default(0)+1):entity.order}}" placeholder="Order">
+                        </div>
+                        <div class="form-group">
+                            <label>Clasification (English)</label>
+                            <input name="clasification" class="form-control" value="{{entity.clasification}}" placeholder="English">
+                        </div>
+                        <div class="form-group">
+                            <label>Clasification (Spanish)</label>
+                            <input name="clasification_es" class="form-control" value="{{entity.clasificationEs}}" placeholder="Spanish">
+                        </div>
+                        <button type="submit" class="btn btn-success">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}   
+{% block script_execute %}
+    <script>
+        $(document).ready(function () {
+            {% if SAVE=='TRUE' %}
+                success("The clasification was saved");    
+            {% endif %}
+        });
+    </script>
+{% endblock %}

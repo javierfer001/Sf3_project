@@ -1,0 +1,56 @@
+{% extends 'BackEndBundle::data.html.twig' %}
+
+{% block data -%}
+    <h1>Category creation</h1>
+    <a class="btn btn-danger" href="{{ path('category') }}">
+        Back to the list
+    </a>
+    <br>
+    <br>
+    <form id="form" role="form" method="POST">
+        <div class="form-group">
+            <label>Category (English)</label>
+            <input name="category_en" class="form-control" value="{{entity.category}}" placeholder="English">
+        </div>
+        <div class="form-group">
+            <label>Category (Spanish)</label>
+            <input name="category_es" class="form-control" value="{{entity.categoryEs}}" placeholder="Spanish">
+        </div>
+        <button type="submit" class="btn btn-success">Save</button>
+        <button type="reset" class="btn btn-default">Reset</button>
+    </form>
+    <script>
+        $(document).ready(function () {
+            $("#form").validate({
+                rules: {
+                    category_en: {
+                        required: true,
+                        minlength: 2
+                    },
+                    category_es: {
+                        required: true,
+                        minlength: 5
+                    },
+                },
+                messages: {
+                    confirm_password: {
+                        required: "Please provide a password",
+                        minlength: "Your password must be at least 5 characters long",
+                        equalTo: "Please enter the same password as above"
+                    },
+                },
+                submitHandler: function () {
+                    $(this).submit();
+                },
+            });
+        });
+    </script>    
+
+    {%if saveOK|default(false)%}              
+        <script>
+            $(document).ready(function () {
+               toastr['success']('', 'Saved Successful');
+            });
+        </script>
+    {%endif%}
+{% endblock %}

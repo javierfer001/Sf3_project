@@ -1,0 +1,14 @@
+category:
+    path:     /
+    defaults: { _controller: "BackEndBundle:Category:index" }
+
+
+
+category_new:
+    path:     /update/{id}/{name}
+    defaults: { _controller: "BackEndBundle:Category:new" }
+
+
+category_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BackEndBundle:Category:delete" }

@@ -1,0 +1,127 @@
+{# stingrlist / echo para temporario reparasion de URL's http://www.w3schools.com/tags/ref_urlencode.asp #}
+{% set stringlist = ({'%20':'-','%2F':'+','%26': '+','%27':'','%2D':'','%23':''}) %}
+{% spaceless %}
+    <!DOCTYPE html>
+    <html lang="{{app.request.locale}}">
+        <head>
+            <meta charset="utf-8" >
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+
+            <title>J&amp;J Rattan | {{'Welcome'|trans}}</title>
+
+            <meta name="author" content="{{'author'|trans}}">
+            <meta name="description" content="{% block sitedescription %}{{'description'|trans}}{% endblock %}">
+
+            <!-- Add to homescreen for Chrome on Android -->
+            <meta name="mobile-web-app-capable" content="yes">
+            <link rel="icon" sizes="196x196" href="{{asset('images/icons/jj196.png')}}">
+
+            <!-- Add to homescreen for Safari on iOS -->
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="apple-mobile-web-app-status-bar-style" content="default">
+            <meta name="apple-mobile-web-app-title" content="J&amp;J Rattan">
+
+            <!-- Tile icon for Win8 (144x144 + tile color) -->
+            <meta name="msapplication-TileImage" content="{{asset('images/icons/jj144.png')}}">
+            <meta name="msapplication-TileColor" content="#B54321"> <!-- Main Color -->
+
+            <!-- Favicons -->
+            <link rel="shortcut icon" href="{{asset('images/icons/favicon.ico')}}">
+            <link rel="apple-touch-icon" href="{{asset('images/icons/jj72.png')}}">
+            <link rel="apple-touch-icon" sizes="72x72" href="{{asset('images/icons/jj72.png')}}">
+            <link rel="apple-touch-icon" sizes="114x114" href="{{asset('images/icons/jj114.png')}}">
+            <link rel="apple-touch-icon" sizes="144x144" href="{{asset('images/icons/jj144.png')}}">
+
+            <!-- CSS files -->
+            <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:100,300,400,600,700,900,400italic|Montserrat:400,700' rel='stylesheet'>
+            <link rel="stylesheet" href="{{asset('plugins/bootstrap/css/bootstrap.min.css')}}">
+            <link rel="stylesheet" href="{{asset('plugins/font-awesome/css/font-awesome.min.css')}}">
+            <link rel="stylesheet" href="{{asset('plugins/elegant_font/html_css/style.css')}}">
+            <link rel="stylesheet" href="{{asset('plugins/rs-plugin/css/settings.css')}}" media="screen">
+            <link rel="stylesheet" href="{{asset('plugins/owl-carousel/owl.carousel.css')}}">
+
+            <!-- Main CSS file -->
+            <link rel="stylesheet" href="{{asset('css/style.css')}}">
+        </head>
+        <body>
+            <div id="preloader">
+                <div id="status">&nbsp;</div>
+            </div>
+            <!-- Global Wrapper -->
+            <div id="wrapper">
+                <!-- Top Bar -->
+                <div class="topbar">
+                    <div class="container">
+                        <div class="row">
+                            <div class=" col-xs-12 col-sm-7">
+                                <ul class="top-menu">
+                                    <li style="border-right: #d4d8df 1px solid;">
+                                        {%if app.request.locale=='en'%}
+                                            <button type="button" onclick="$('#formLocal').submit()" class="btn btn-icon btn-f br4"><i class="fa fa-language"></i>Espa&ntilde;ol</button>
+                                        {%else%}
+                                            <button type="button" onclick="$('#formLocal').submit()" class="btn btn-icon btn-f br4"><i class="fa fa-language"></i>English</button>
+                                        {%endif%}
+                                    </li>
+                                    <li><a href="tel:305-666-7503"><i class="fa fa-phone"></i> 305-666-7503</a></li>
+                                    <li class="hidden-xs hidden-sm "><a href="{{path('contact')}}#map" title="Store Address"><i class="fa fa-map-marker"></i> 4702 SW 72nd Ave, Miami, FL 33155</a></li>
+                                    <!--<a href="https://maps.google.com/maps?ll=25.726313,-80.310853&z=16&t=m&hl=en-US&gl=US&mapclient=embed&cid=230946199330176980" target="blank"> to google maps-->
+                                </ul>
+                            </div>
+                            <div class="col-sm-5 hidden-xs">
+                                <div class="pull-right ">
+                                    <ul class="top-menu">
+                                        <li><a href="{{path('about')}}" title="{{'About Us'|trans}}"><i class="fa icon_building"></i> {{'About Us'|trans}}</a></li>
+                                        <li><span class="py"> | </span></li>
+                                        <li><a href="https://www.instagram.com/jjrattan" data-placement="bottom" data-toggle="tooltip" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+                                        <li><a href="https://www.facebook.com/JJRattan" data-placement="bottom" data-toggle="tooltip" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="https://plus.google.com/113600105196154706578"  data-placement="bottom" data-toggle="tooltip" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+                                        <li><a href="https://www.pinterest.com/jjrattan/"  data-placement="bottom" data-toggle="tooltip" title="Pintrest"><i class="fa fa-pinterest"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form id="formLocal" action="{% block lenguaje %}{{path('lenguaje',{'local':'es'})}}{% endblock %}" method="POST"></form>
+
+                {%include '::partial/menu.html.twig' with {'category':category} %}       
+
+                {% block contect%}
+                    Welcome to J&amp;J Rattan
+                {% endblock %}                        
+
+                {%include '::partial/footer.html.twig'%}
+            </div> <!-- END Global Wrapper -->
+
+            <!-- Javascript files -->
+            <script type="text/javascript" src="{{asset('plugins/jquery/jquery-2.1.0.min.js')}}"></script>
+            <script type="text/javascript" src="{{asset('plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+            <script type="text/javascript" src="{{asset('plugins/rs-plugin/js/jquery.themepunch.tools.min.js')}}"></script>
+            <script type="text/javascript" src="{{asset('plugins/rs-plugin/js/jquery.themepunch.revolution.min.js')}}"></script>
+            <script type="text/javascript" src="{{asset('plugins/jquery.appear.js')}}"></script>
+            {#<script type="text/javascript" src="{{asset('plugins/retina.min.js')}}"></script>#}
+            {#<script type="text/javascript" src="{{asset('plugins/retina.js')}}"></script>#}
+            <script type="text/javascript" src="{{asset('plugins/stellar.min.js')}}"></script>
+            <script type="text/javascript" src="{{asset('plugins/sticky.min.js')}}"></script>
+            <script type="text/javascript" src="{{asset('plugins/owl-carousel/owl.carousel.min.js')}}"></script>
+            <script type="text/javascript" src="{{asset('plugins/isotope/isotope.pkgd.min.js')}}"></script>
+            <script type="text/javascript" src="{{asset('plugins/isotope/imagesloaded.pkgd.min.js')}}"></script>
+            <script type="text/javascript" src="{{asset('plugins/jquery.validate.min.js')}}"></script>
+            <script type="text/javascript" src="{{asset('plugins/jquery.zoom.min.js')}}"></script>
+            <!-- Main javascript file -->
+            <script type="text/javascript" src="{{asset('js/script.js')}}"></script>
+
+        {% block script_utility %}{% endblock %}
+
+            <script>
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+                ga('create', 'UA-78253215-1', 'auto');
+                ga('send', 'pageview');
+            </script>
+    </body>
+</html>
+{% endspaceless %}

@@ -1,0 +1,31 @@
+clasification_index_metronic:
+    path:     /
+    defaults: { _controller: "MetronicBundle:Clasification:index" }
+    
+clasification_pagination_metronic:
+    path:     /pagination
+    defaults: { _controller: "MetronicBundle:Clasification:pagination" }
+    
+clasification_new_metronic:
+    path:     /new/{id}
+    defaults: { _controller: "MetronicBundle:Clasification:new" }
+
+clasification_delete_metronic:
+    path:     /delete
+    defaults: { _controller: "MetronicBundle:Clasification:delete" }    
+
+question_index_metronic:
+    path:     /question/{id_clasification}/index
+    defaults: { _controller: "MetronicBundle:Question:index" }
+    
+question_pagination_metronic:
+    path:     /question/pagination
+    defaults: { _controller: "MetronicBundle:Question:pagination" }    
+
+question_new_metronic:
+    path:     /question/new/{id_clasification}/{id}
+    defaults: { _controller: "MetronicBundle:Question:new" }
+
+question_delete_metronic:
+    path:     /question/delete/
+    defaults: { _controller: "MetronicBundle:Question:delete" }

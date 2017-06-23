@@ -1,0 +1,9 @@
+review_index:
+    path:     /index/{id_prod}
+    defaults: { _controller: "BackEndBundle:Review:index" }
+review_new:
+    path:     /new/{id}/{id_prod}
+    defaults: { _controller: "BackEndBundle:Review:new" }
+review_delete:
+    path:     /delete/{id}/{id_prod}
+    defaults: { _controller: "BackEndBundle:Review:delete" }

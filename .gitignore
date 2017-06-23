@@ -1,0 +1,5 @@
+web/producto/
+vendor/
+var/cache/
+var/logs/
+var/sessions/

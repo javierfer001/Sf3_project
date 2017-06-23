@@ -1,0 +1,39 @@
+about:
+    path:     /{_locale}/about-us
+    defaults: { _controller: FrondBundle:Default:about, _locale: en }
+    requirements:
+        _locale: en|es 
+faq:
+    path:     /{_locale}/faq
+    defaults: { _controller: FrondBundle:Default:faq, _locale: en }
+    requirements:
+        _locale: en|es 
+contact:
+    path:     /{_locale}/contact-us
+    defaults: { _controller: FrondBundle:Default:contact, _locale: en }
+    requirements:
+        _locale: en|es         
+term:
+    path:     /{_locale}/terms-and-conditions
+    defaults: { _controller: FrondBundle:Default:termAndCondition, _locale: en }
+    requirements:
+        _locale: en|es 
+privacy:
+    path:     /{_locale}/privacy-policy
+    defaults: { _controller: FrondBundle:Default:privacyPolicy, _locale: en }
+    requirements:
+        _locale: en|es 
+product:
+    path:     /{_locale}/{category}/show/{id}/{type}/{page}/{perpage}
+    defaults: { _controller: FrondBundle:Default:product, _locale: en, perpage: 12}
+    requirements:
+        _locale: en|es 
+product_name_show:
+    path:     /{_locale}/show/product/{id}/{name}
+    defaults: { _controller: FrondBundle:Default:showProduct, _locale: en }
+    requirements:
+        _locale: en|es 
+lenguaje:
+    path:     /cange/locale/
+    defaults: { _controller: FrondBundle:Default:cangeLocal }
+

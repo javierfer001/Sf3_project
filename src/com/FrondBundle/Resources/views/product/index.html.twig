@@ -1,0 +1,106 @@
+{%extends "::base.html.twig"%}
+{% block lenguaje %}{{path('product',{'_locale':app.request.locale=='es' ?'en':'es','category':cat.showCategory(app.request.locale=='es' ?'en':'es')|url_encode,'id':cat.id,'type':type,'page':1}) }}{% endblock %}
+{% block sitedescription %}{{'Explore Our Store'|trans}}! {{'ExploreMessage'|trans}}{% endblock %}
+
+{% block contect %}
+    <section class="section-page">
+        <div class="container">
+            <div class="row">
+                <!-- West SideBar -->
+                <div class=" hidden-xs hidden-sm col-md-3  ">
+                    {%include '::partial/productIndexSidebar.html.twig'%}
+                </div>
+                <div class="col-md-9">
+                    <div class="team-section team-section-2 portfolio portfolio-animation-off">
+                        <div class="row">
+                            <div class="toolbar-shop">
+                                {#<div class="btn-group shop-ordering">
+                                    <button data-toggle="dropdown" class="btn btn-b br2 dropdown-toggle" type="button" aria-expanded="false">
+                                        <span class="mr10">Sort by </span> <span class="caret"></span>
+                                    </button>
+                                    <ul role="menu" class="dropdown-menu">
+                                        <li><a href="#">Name</a></li>
+                                        <li><a href="#">Price</a></li>
+                                        <li><a href="#">Sales</a></li>
+                                        <li><a href="#">Rating</a></li>
+                                    </ul>
+                                </div>
+                                <div class="shop-ordering">
+                                    <button title="" data-toggle="tooltip" class="btn btn-b br2" type="button" data-original-title="Sort ascending"><i class="fa fa-sort-amount-asc"></i></button>
+                                </div>
+                                <div class="btn-group shop-ordering hidden-xs">
+                                    <button data-toggle="dropdown" class="btn btn-b br2 dropdown-toggle" type="button" aria-expanded="false">
+                                        <span class="mr10">Show 9 products </span> <span class="caret"></span>
+                                    </button>
+                                    <ul role="menu" class="dropdown-menu">
+                                        <li><a href="{{path('product',{'category':cat.showCategory(app.request.locale)|url_encode|replace(stringlist),'id': id,'type':'cat','page':1,'perpage':1})}}">Show 1 product</a></li>
+                                        <li><a href="{{path('product',{'category':cat.showCategory(app.request.locale)|url_encode|replace(stringlist),'id': id,'type':'cat','page':1,'perpage':9})}}">Show 9 products</a></li>
+                                        <li><a href="{{path('product',{'category':cat.showCategory(app.request.locale)|url_encode|replace(stringlist),'id': id,'type':'cat','page':1,'perpage':12})}}">Show 12 products</a></li>
+                                    </ul>
+                                </div>
+                            </div>#}
+                                {%if product|length==0 %}  
+                                    <div class="alert alert-success fade in">
+                                        <h4>{{ 'No Merchendise'|trans|raw }}<strong>{{ cat.showCategory(app.request.locale)}}</strong>!</h4>
+                                    </div>
+                                {% endif %}
+                                {% for p in product %}
+                                    <div class="col-sm-6 col-md-4 el">
+                                        <div class="portfolio-el view">
+                                            <img class="img-thumbnail" alt="{{p.imagenesShowNameEdit('file_1').getAlt()|default('Image J&J RATTAN')}}" src="{{asset('producto/'~p.imagenesShowName('file_1'))}}">
+                                            <a href="{{path('product_name_show',{'id':p.id,'name':(app.request.locale=='es' ? (p.nameEs)|url_encode|replace(stringlist) : (p.name))|url_encode|replace(stringlist)})}}" class="mask">
+                                                <div class="portfolio-middle">
+                                                    <h3 class="project-title br-bottom mb10">{{ app.request.locale=='es' ? (p.nameEs|truncate(30)) : (p.name|truncate(30)) }}</h3>
+                                                    <p class="text">{{ p.showSubCategory(app.request.locale)|truncate(30) }}</p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div> <!-- END portfolio Item -->
+                                {% endfor %}
+                            </div>
+                        </div> <!-- END Isotope -->
+                        <div class="clearfix mb10">
+                            {# Paginator #}
+                            {% if pagesCount > 1 %}
+                                {# the amount of first and last pages to be displayed #}
+                                {% set extremePagesLimit = 1 %}
+                                {# the number of pages that are displayed around the active page #}
+                                {% set nearbyPagesLimit = 4 %}
+                                <div class="pagination">
+                                    <ul class="pagination">
+                                        <li{{ page == 1 ? ' class="disabled"' }}><a href="{% if page !=1 %}{{path('product',{'category':cat.showCategory(app.request.locale),'id': id,'type':type,'page':page-1})}}{% else %}#{% endif %}"><i class="fa fa-chevron-left"></i></a></li>
+                                                {% if page > 1 %}
+                                                    {% for i in range(1, extremePagesLimit) if ( i < page - nearbyPagesLimit ) %}
+                                                <li {%if page ==i%}class="active"{%endif%}><a href="{{path('product',{'category':cat.showCategory(app.request.locale),'id': id,'type':type,'page':i})}}">{{ i }}</a></li>                                                {% endfor %}
+                                                    {% if extremePagesLimit + 1 < page - nearbyPagesLimit %}
+                                                    <li class="disabled"><a href="#">...</a></li>{% endif %}
+
+                                                    {% for i in range(page-nearbyPagesLimit, page-1) if ( i > 0 ) %}
+                                                        <li {%if page ==i%}class="active"{%endif%}><a href="{{path('product',{'category':cat.showCategory(app.request.locale),'id': id,'type':type,'page':i})}}">{{ i }}</a></li>
+                                                        {% endfor %}
+                                                    {% endif %}
+
+                                                <li class="active"><a href="{{path('product',{'category':cat.showCategory(app.request.locale),'id': id,'type':type,'page':page})}}">{{ page }}</a></li> 
+                                                    {% if page < pagesCount %}
+                                                        {% for i in range(page+1, page + nearbyPagesLimit) if ( i <= pagesCount ) %}
+                                                        <li {%if page ==i%}class="active"{%endif%}><a href="{{path('product',{'category':cat.showCategory(app.request.locale),'id': id,'type':type,'page':i})}}">{{ i }}</a></li>
+                                                        {% endfor %}
+
+                                                    {% if  (pagesCount - extremePagesLimit) > (page + nearbyPagesLimit) %}
+                                                        <li class="disabled"><a href="#">...</a></li>
+                                                        {% endif %}
+
+                                                    {% for i in range(pagesCount - extremePagesLimit+1, pagesCount) if ( i > page + nearbyPagesLimit ) %}
+                                                        <li {%if page ==i%}class="active"{%endif%}><a href="{{path('product',{'category':cat.showCategory(app.request.locale),'id': id,'type':type,'page':i})}}">{{ i }}</a></li>
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                <li{{ page == pagesCount ? ' class="disabled"' }}><a href="{% if page != pagesCount %}{{path('product',{'category':cat.showCategory(app.request.locale),'id': id,'type':type,'page':page+1})}}{% else %}#{% endif %}"><i class="fa fa-chevron-right"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        {% endif %}
+                                        </div>
+                                    </div><!-- END col-->
+                                </div><!-- END row-->
+                            </div><!-- END container-->
+                    </section><!-- END Blog Page-->
+                    {% endblock %}   

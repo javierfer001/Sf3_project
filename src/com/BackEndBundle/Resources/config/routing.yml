@@ -1,0 +1,35 @@
+back_end_question:
+    resource: "@BackEndBundle/Resources/config/routing/question.yml"
+    prefix:   /question
+        
+back_end_clasification:
+    resource: "@BackEndBundle/Resources/config/routing/clasifucation.yml"
+    prefix:   /clasification
+
+back_end_review:
+    resource: "@BackEndBundle/Resources/config/routing/review.yml"
+    prefix:   /review
+
+back_end_subcategory:
+    resource: "@BackEndBundle/Resources/config/routing/subcategory.yml"
+    prefix:   /subcategory
+
+back_end_product:
+    resource: "@BackEndBundle/Resources/config/routing/product.yml"
+    prefix:   /product
+
+back_end_category:
+    resource: "@BackEndBundle/Resources/config/routing/category.yml"
+    prefix:   /category
+
+principal:
+    path:     /principal
+    defaults: { _controller: BackEndBundle:Default:principal }    
+
+back_end_images:
+      resource: "@BackEndBundle/Resources/config/routing/images.yml"
+      prefix:   /images
+
+back_end_popular:
+      resource: "@BackEndBundle/Resources/config/routing/popularproduct.yml"
+      prefix:   /popular/product

@@ -1,0 +1,31 @@
+category_metronic:
+    path:     /index
+    defaults: { _controller: "MetronicBundle:Category:index" }
+    
+category_pagination_metronic:
+    path:     /pagination
+    defaults: { _controller: "MetronicBundle:Category:pagination" }
+
+category_new_metronic:
+    path:     /new/category/{id}
+    defaults: { _controller: "MetronicBundle:Category:new" }
+    
+category_delete_metronic:
+    path:     /delete/category/
+    defaults: { _controller: "MetronicBundle:Category:delete" }
+
+category_sub_metronic:
+    path:     /sub/category/index/{idCategory}
+    defaults: { _controller: "MetronicBundle:SubCategory:index" }
+
+category_sub_new_metronic:
+    path:     /sub/category/new/{idCategory}/{id}
+    defaults: { _controller: "MetronicBundle:SubCategory:new" }
+
+category_sub_delete_metronic:
+    path:     /sub/category/delete/
+    defaults: { _controller: "MetronicBundle:SubCategory:delete" }
+
+category_sub_pagination_metronic:
+    path:     /sub/category/pagination/
+    defaults: { _controller: "MetronicBundle:SubCategory:pagination" }

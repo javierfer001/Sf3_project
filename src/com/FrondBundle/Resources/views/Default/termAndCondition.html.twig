@@ -1,0 +1,110 @@
+{%extends "::base.html.twig"%}
+{% block lenguaje %}{{path('term',{'_locale':app.request.locale=='es' ?'en':'es'})}}{% endblock %}
+{% block welcome %}{{ 'TERMS AND CONDITIONS'|trans}}{% endblock %}
+
+{% block contect %}
+    <section class="section bg-img bg02 fixed" data-stellar-background-ratio="0.4">
+        <div class="bg-overlay op2"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1 class="title-larger title color-on-img text-center mb20 mt10">{% trans from 'term'|raw%}title{%endtrans%}</h1>
+                    <div class="br-bottom-center mb0"></div>
+                    <p class="intro-p text-center mb0">{% trans from 'about'|raw%}subtitle{%endtrans%}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-page mb50">
+        <div class="container">
+            {%if app.request.locale=='es'%}
+                <div class="alert alert-warning alert-dismissable fade in">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <strong>Avertencia!</strong> {% trans from 'term'|raw%}leyen{%endtrans%}
+                </div>
+            {%endif%} 
+            <div class="divider mt40"></div>
+            <div class="row">
+                <div class="col-md-10 space-left page-sidebars ">
+                    <div class="row">
+                        <div class="">
+                            <p style="text-align: justify">
+                                <strong>ACCEPTANCE</strong>: The signing of this Receipt acknowledges the fact that the goods has received in good and/or acceptable condition and that buyer acknowledges and agrees to the terms of this sales contract.
+                                <br>
+                            </p>    
+                            <p style="text-align: justify">
+                                <strong>EXAMINATION OF MERCHANDISE</strong>:  J &amp; J Rattan Plant &amp; Wicker Shop, Inc., hereinafter J&amp; J Rattan, that buyer shall have the right to examine all merchandise being purchased, or to refuse to examine, and seller disclaims any implied warranty as to the merchandise with regard to any defect which such examination failed to reveal. seller disclaims any implied or express warranty and any warranty of fitness for a particular purpose.
+                                <br>
+                            </p>
+                            <p style="text-align: justify">
+                                <strong>RETURNS</strong>: If buyer wishes to return any merchandise, such return of merchandise must be made within three(3) days of original purchase and must be accompanied with the sales receipt. The acceptance of such merchandise shall be in the sole discretion of J &amp; J Rattan. Upon proper return of merchandise by buyer, J &amp; J Rattan shall only be obligated to issue store credit for the returned goods and no cash returns will be made. Furthermore, no refunds or exchanges will be made for plants.
+                                <br>
+                            </p>
+
+                            <p style="text-align: justify">
+                                <strong>DELAY</strong>: J &amp; J Rattan shall in no way be liable for any delay or inability to deliver any merchandise ordered by buyer.
+                                <br>
+                            </p>
+
+                            <p style="text-align: justify">
+                                <strong>LIABILITY</strong>: J&amp;J Rattan will not be liable for any loss, damages, costs of repairs, incidental or consequential damages of any kind, negligence or strict liability arising in connection with the design, manufacture, sale, use or repair of the merchandise. In no event will J &amp; J Rattan be liable to buyer for more than the purchase price of the merchandise sold hereunder.
+                                <br>
+                            </p>
+
+                            <p style="text-align: justify">
+                                <strong>THIRD PARTY CLAIMS</strong>: Buyer agrees to indemnify and hold J &amp; J Rattan harmless with respect to any third party claims for personal injury (or death), property damages or other loss, which claims are based upon defective or allegedly defective design, material or workmanship furnished to J &amp; J Rattan by others.
+                                <br>
+                            </p>
+
+                            <p style="text-align: justify">
+                                <strong>THIRD PARTY CLAIMS</strong>: Buyer agrees to indemnify and hold J &amp; J Rattan harmless with respect to any third party claims for personal injury (or death), property damages or other loss, which claims are based upon defective or allegedly defective design, material or workmanship furnished to J &amp; J Rattan by others.
+                                <br>
+                            </p>
+
+                            <p style="text-align: justify">
+                                <strong>LAY-AWAY</strong>: In the event J &amp; J Rattan and buyer agree to lay-away any merchandise for subsequent purchase by buyer,  J &amp; J Rattan shall determine the required amount of cash in order for J &amp; J Rattan to retain such merchandise. Merchandise will be held by J &amp; J Rattan for two (2) weeks after first deposit and any retention of the merchandise for a period greater than two (2)  weeks shall be in the sole discretion of J &amp; J Rattan. If for any reason buyer decides to terminate lay-away agreement, J &amp; J Rattan shall in no way be responsible for any cash refunds, credit or transfers of deposit or exchange of merchandise.
+                                <br>
+                            </p>
+
+                            <p style="text-align: justify">
+                                <strong>CANCELLATIONS</strong>: Special orders may be cancelled at seller's option only. If buyer cancels a special order, seller may retain any down payment as liquidated damages, or charge a 20% of purchase rice  re-stocking charge at its option.
+                                <br>
+                            </p>
+
+                            <p style="text-align: justify">
+                                <strong>VARIATIONS IN COLOR</strong>: Buyer acknowledges and agrees that in the event the product which he is purchasing is made of either rattan, wicker, rattan core or driftwood, these products are natural products and are of a type and nature that vary In color. Buyer therefore agrees to accept variations in color between those which might have been used as floor samples and those products actually delivered. Seller shall not be responsible for fabric fading or materials oxidizing.
+                                <br>
+                            </p>
+
+                            <p style="text-align: justify">
+                                <strong>STORAGE</strong>: Should buyer fail to pick up or take delivery of merchandise after ten (10) days of availability, a 10% of purchase price storage charge shall be charged.
+                                <br>
+                            </p>
+
+                            <p style="text-align: justify">
+                                <strong>SEVERABILITY</strong>: This is J &amp; J Rattan's standard safes contract and any part thereof contrary to any Federal, State or Local law shall not be applicable and shall not invalidate any other part of this agreement.
+                                <br>
+                            </p>
+
+                            <p style="text-align: justify">
+                                <strong>LEGAL PROCEEDINGS</strong>: The buyer shall bear any and all attorneys' fees and costs incurred by any legal proceedings brought by the buyer, its agents, its employees, or J &amp; J Rattan or by J &amp; J Rattan against said and further agrees that any claims brought by or against J &amp; J Rattan shall be maintained only in the appropriate court situated in the Country of Dade, Miami, State of Florida.
+                                <br>
+                            </p>
+
+                            <p style="text-align: justify">
+                                <strong>FINAL EXPRESSION OF PARTIES</strong>: This contract constitutes the sole and only agreement of the parties ?????? and supersedes any prior understandings of written or oral agreements between the parties respecting the within subject matter.
+                                <br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                {# EAST DE LA PAGINA#}
+                <div class="hidden-xs hidden-sm col-md-2 space-left">
+                    {%include '::partial/sidebar.html.twig'%}
+                </div>
+            </div>
+        </div>
+    </section> <!-- END Blog Page-->
+
+{% endblock %}    
